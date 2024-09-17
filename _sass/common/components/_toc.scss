@@ -1,124 +1,136 @@
+/* Profile Container */
+.sidebar-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: map-get($spacers, 4);
+}
+
+/* Profile Image */
+.sidebar-profile-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: map-get($spacers, 2);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* Profile Name */
+.sidebar-profile-name {
+  h1 {
+    font-size: map-get($base, font-size-h1);
+    font-weight: map-get($base, font-weight-bold);
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.2;
+  }
+  &::after {
+    content: '';
+    display: block;
+    width: 40%;
+    height: 2px;
+    background-color: #cccccc;
+    margin: map-get($spacers, 3) auto map-get($spacers, 2);
+  }
+}
+
+/* Profile Description */
+.sidebar-profile-description p {
+  font-size: map-get($base, font-size-sm);
+  font-weight: map-get($base, font-weight);
+  color: #cccccc;
+  margin-top: map-get($spacers, 1);
+  margin-bottom: 0;
+}
+
+.sidebar-toc-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: map-get($spacers, 3) map-get($spacers, 2);
+  background-image: url('/assets/images/pcb_sidebar_bg1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.sidebar-toc-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 255, 0.4);
+  z-index: 1;
+}
+
+.sidebar-toc {
+  z-index: 2;
+  width: 100%;
+  color: #ffffff;
+}
+
 ul.toc {
   display: block;
   margin: 0;
-  color: $text-color;
+  padding: 0;
   list-style-type: none;
+  color: #ffffff;
+  text-align: center;
+
   & > li {
-    margin: map-get($spacers, 1) / 2 0;
-    a {
+    margin: map-get($spacers, 2) 0;
+    display: block;
+
+    .toc-item {
+      display: block;
+      position: relative;
+      padding-bottom: map-get($spacers, 1);
+      text-align: center;
+    }
+    a.toc-text {
+      font-size: map-get($base, font-size-sm);
+      font-weight: map-get($base, font-weight-light-bold); /* Use bold for better emphasis */
+      position: relative;
       display: inline-block;
-      margin: map-get($spacers, 1) / 4 0;
-      text-decoration: none !important;
-    }
-  }
-  .toc-h1,
-  .toc-h2,
-  .toc-h3,
-  .toc-h4,
-  .toc-h5,
-  .toc-h6 {
-    a {
-      @include link-colors($text-color, $main-color-1);
-    }
-    &.active {
-      a {
-        @include link-colors($main-color-1);
+      padding: 0;
+      color: #ffffff;
+      text-decoration: none;
+    
+      /* Add underline effect */
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+        height: 2px;
+        background-color: #cccccc;
+        transition: background-color 0.3s ease;
+      }
+    
+
+      &:hover {
+        color: #ffffff;
+        text-decoration: none; /* Ensure no underline on hover */
+        
+        &::after {
+          background-color: #ffffff;
+        }
       }
     }
-  }
-
-  .toc-h2,
-  .toc-h3,
-  .toc-h4,
-  .toc-h5,
-  .toc-h6 {
-    &, a {
-      font-size: map-get($base, font-size-xs);
-      font-weight: map-get($base, font-weight);
-      line-height: map-get($base, line-height-xs);
-    }
-  }
-  .toc-h1 {
-    @include split-line(bottom);
-    padding: map-get($spacers, 2) 0 map-get($spacers, 1) 0;
-    margin-bottom: map-get($spacers, 2);
-    color: $text-color-d;
-    &, a {
-      font-size: map-get($base, font-size-sm);
-      font-weight: map-get($base, font-weight-bold);
-      line-height: map-get($base, line-height-sm);
-    }
-    a {
-      @include link-colors($text-color-d, $main-color-1);
-    }
-  }
-  .toc-h2 {
-    &, a {
-      font-weight: map-get($base, font-weight-bold);
-    }
-  }
-  .toc-h3 {
-    margin-left: map-get($spacers, 3);
-  }
-  .toc-h4 {
-    margin-left: map-get($spacers, 3) * 2;
-  }
-  .toc-h5,
-  .toc-h6 {
-    margin-left: map-get($spacers, 3) * 3;
-  }
-  .toc-h6 {
-    color: $text-color-l;
-    a {
-      @include link-colors($text-color-l, $main-color-1);
-    }
+      
+    
   }
 }
 
-ul.toc--ellipsis {
-  & > li {
-    @include overflow(hidden);
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-}
-
-ul.toc--navigator {
-  & > li {
-    a {
-      padding-left: map-get($spacers, 2);
-      margin: map-get($spacers, 1) 0;
-    }
-    &.active {
-      a {
-        margin-left: -4px;
-        @include split-line(left, 4px, $main-color-1);
-      }
-    }
-  }
-  .toc-h2,
-  .toc-h3,
-  .toc-h4 {
-    color: $text-color-l;
-    a {
-      @include link-colors($text-color-l);
-    }
-  }
-  .toc-h1 {
-    &, a {
-      font-size: map-get($base, font-size);
-      line-height: map-get($base, line-height);
-    }
-    color: $text-color;
-    a {
-      @include link-colors($text-color-d);
-    }
-  }
-  .toc-h2 {
-    &, a {
-      font-size: map-get($base, font-size-sm);
-      font-weight: map-get($base, font-weight-bold);
-      line-height: map-get($base, line-height-sm);
-    }
-  }
-}

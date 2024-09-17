@@ -24,6 +24,8 @@ titles:
   fr-LU   : *FR
   # @end locale config
 key: page-about
+sidebar:
+  nav: home-nav
 ---
 
 ![TeXt Theme](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/TeXt-home.jpg)
