@@ -2,17 +2,20 @@ home-nav:
   - title: Home
     url: /
   - title: Projects
-    url: /projects
+    url: /content/pages/projects.html
   - title: Resume
-    url: /about
+    url: /content/pages/resume.html
   - title: Contact
     url: /contact
 
 global:
   - title: Home
     url: /
+    key: home
   - title: About
-    url: /about/bliblub
+    url: /about.html
+    key: about
 custom:
   - title: Custom
     url: /custom
+    key: custom
