@@ -2,7 +2,7 @@
 layout: article
 titles:
   # @start locale config
-  en      : &EN       Projects
+  en      : &EN       Project XY
   en-GB   : *EN
   en-US   : *EN
   en-CA   : *EN
@@ -23,11 +23,11 @@ titles:
   fr-FR   : *FR
   fr-LU   : *FR
   # @end locale config
-key: page-about
-header_nav: empty
+key: project-xy
+
 sidebar:
   nav: home-nav
 ---
 
-Ich habe erstellt: xy
+Dies ist ein Projekt von mir
 work in progress...

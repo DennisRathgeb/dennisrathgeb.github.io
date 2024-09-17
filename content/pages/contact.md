@@ -2,7 +2,7 @@
 layout: article
 titles:
   # @start locale config
-  en      : &EN       Projects
+  en      : &EN       Contact
   en-GB   : *EN
   en-US   : *EN
   en-CA   : *EN
@@ -23,11 +23,12 @@ titles:
   fr-FR   : *FR
   fr-LU   : *FR
   # @end locale config
-key: page-about
+key: page-contact
+
 header_nav: empty
 sidebar:
   nav: home-nav
 ---
 
-Ich habe erstellt: xy
+email: dennis.rathgeb@gmx.ch
 work in progress...

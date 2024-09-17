@@ -24,9 +24,10 @@ titles:
   fr-LU   : *FR
   # @end locale config
 key: page-resume
-
+header_nav: empty
 sidebar:
   nav: home-nav
 ---
 
-Hello world Ich heisse Dennis und kann gut.
+Ich heisse Dennis und kann gut.
+work in progress...

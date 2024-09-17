@@ -1,21 +1,22 @@
 home-nav:
-  - title: Home
-    url: /
   - title: Projects
     url: /content/pages/projects.html
   - title: Resume
     url: /content/pages/resume.html
   - title: Contact
-    url: /contact
+    url: /content/pages/contact.html
 
 global:
-  - title: Home
-    url: /
-    key: home
-  - title: About
-    url: /about.html
-    key: about
-custom:
-  - title: Custom
-    url: /custom
-    key: custom
+  - title: Projects
+    url: /content/pages/projects.html
+  - title: Resume
+    url: /content/pages/resume.html
+  - title: Contact
+    url: /content/pages/contact.html
+empty:
+  - title: 
+    url: 
+project:
+  - title: Back to Projects
+    url: /content/pages/projects.html
+    key: project
