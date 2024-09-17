@@ -1,0 +1,14 @@
+.projects-grid .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 1.5rem; /* Adjust the spacing between the cards */
+    justify-content: center; /* Center the cards in the container */
+    padding: 2rem; /* Add padding around the grid */
+  }
+  
+  @media (max-width: 768px) {
+    .projects-grid .grid {
+      grid-template-columns: 1fr; /* One column on mobile */
+    }
+  }
+  

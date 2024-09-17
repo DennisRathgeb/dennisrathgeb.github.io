@@ -1,0 +1,14 @@
+- title: "Pottery Oven"
+  description: "A project focused on capturing nature through lenses."
+  image: "/assets/images/pottery_oven.png"
+  url: "/projects/photograph"
+
+- title: "Custom PCB"
+  description: "PCB designed in KiCad Lorem ipsum filling text and filling text."
+  image: "/assets/images/pcb_sidebar_bg1.jpg"
+  url: "/projects/website-design"
+
+- title: "Variometer for Paragliding"
+  description: "Custom,solar powered variometer in a small form factor. Icludes a GPS, BLE and Lora Module."
+  image: "/assets/images/pcb_sidebar_bg.jpeg"
+  url: "/projects/data-analysis"

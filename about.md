@@ -25,7 +25,6 @@ titles:
   # @end locale config
 key: page-about
 header_nav: global
-nav_key: about
 sidebar:
   nav: home-nav
 ---

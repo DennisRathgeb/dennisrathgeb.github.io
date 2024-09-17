@@ -31,10 +31,16 @@
 .card__image {
   position: relative;
   width: 100%;
+  padding-bottom: 75%; /* This sets the height to 75% of the width, enforcing a 3:4 aspect ratio */
+  overflow: hidden;
+  
   & > img {
-    display: block;
+    position: absolute; /* Absolutely position the image inside the relative container */
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
+    height: 100%; /* Makes the image cover the container fully */
+    object-fit: cover; /* Ensures the image is cropped correctly while maintaining its aspect ratio */
     border-radius: inherit;
   }
   & > .overlay {
