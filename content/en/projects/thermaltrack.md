@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: project
 title: "ThermalGuide — ML prediction of thermals and wind fields from paragliding GPS data"
 date: 2025-09-18
 description: "Bachelor's thesis at ZHAW: a full-stack system that recovers latent flight states from GPS paragliding trajectories via MAP estimation and uses them to train a physics-structured multiplicative GAM for vertical-wind and wind-field prediction. Four components — React/MapLibre frontend, Django/GeoDjango/PostGIS backend, ML repo (PyTorch + FastAPI), MkDocs documentation."
@@ -7,13 +7,23 @@ image: /assets/images/projects/thermaltrack/cover.jpg
 permalink: /en/projects/thermaltrack/
 lang: en
 key: project-thermaltrack
-sidebar:
-  nav: project-en
 ---
+
+> Full-stack system that predicts thermals and wind fields over the Prättigau–Davos region — trained on paragliding GPS trajectories with reconstructed latent flight states.
+
+**Year:** 2025–ongoing  ·  **Context:** ZHAW Bachelor's thesis (B.Sc. Electrical Engineering, supervisor Prof. Karl Rege)  ·  **Role:** Solo build
 
 ![ThermalGuide — interactive thermal and wind-field prediction for the Prättigau–Davos region, rendered via the frontend MapLibre map with 3D terrain]({{ '/assets/images/projects/thermaltrack/cover.jpg' | relative_url }})
 
-## Overview
+**TL;DR**
+- **Problem:** Predict thermals and wind fields in the Alps from Lagrange sensor data (paraglider GPS), where heading, airspeed and wind are **latent**.
+- **My role:** Solo build — ingest/enrichment pipeline, MAP solver for latent flight states, physics-structured block GAM, FastAPI inference server, frontend, docs site.
+- **Outcome:** 4 separate repos forming an end-to-end data path; MAP solver v1 validated against the dense-debug path to 1e-6°; hierarchical block GAM trainable, model registry + inference server live; ~60 M rows from ~11 k flights (Prättigau–Davos region).
+- **Stack:** Python (~112 k LOC), TypeScript (~21 k LOC), Django 5 + GeoDjango + PostGIS, Celery + Redis, PyTorch (GPU), FastAPI, React 19 + MapLibre GL 5 + deck.gl 9, MkDocs + Obsidian.
+
+---
+
+## Context
 
 **ThermalGuide** is my ongoing Bachelor's thesis in *B.Sc. Electrical Engineering* at the **ZHAW** (examination committee: Prof. Karl Rege). The goal is a **predictive model for thermals and wind fields** in the Prättigau–Davos region of Switzerland, trained from **GPS trajectories of paragliding flights** — Lagrange-sensor data. That framing matters: the "sensor" (the glider) itself moves with the field it is meant to observe, so the directly measurable quantities (groundspeed, GPS altitude, vario) are only indirect witnesses of the underlying air mass and vertical wind. The quantities of interest — heading, airspeed, local wind — are **latent** and must be reconstructed from the trajectory *before* any actual learning happens.
 
@@ -21,7 +31,23 @@ The system is built as **four separate repositories** that together form one end
 
 ---
 
-## System architecture
+## My Role
+
+Solo project, ongoing Bachelor's thesis (supervisor Prof. Karl Rege, ZHAW):
+
+- **Ingest pipeline:** XContest webscraper (Tor + multi-account auth, undetected-chromedriver), custom IGC parser as a Django-free library.
+- **Data architecture:** RAW → CANONICAL → PRODUCTS layering, architecture lint with 20+ rules (`make arch-lint`).
+- **Enrichment:** ICON-DREAM, ERA5, Payerne radiosondes and hesse-250 m joined server-side onto flight trackpoints.
+- **MAP solver:** reconstruction of latent flight states (heading/wind/airspeed) via Gauss-Newton MAP on a tridiagonal normal equation, O(T) per flight.
+- **Hierarchical energy-block GAM:** multiplicative model with physics-motivated blocks, block-coordinate descent, custom B-spline / basis infrastructure on GPU.
+- **Inference server:** FastAPI with GPU backend, model registry with auto-discovery, custom tile format (TTDT v1).
+- **Frontend:** React 19 + MapLibre GL 5 + deck.gl 9, 3D terrain via Terrain-RGB, Apache Arrow IPC for 3D trajectories.
+- **Docs site:** Obsidian → MkDocs Material, cross-platform aggregation pipeline, GitHub Actions deploy.
+- **Scientific work:** weekly supervisor meetings, documentation in the Obsidian vault, written thesis.
+
+---
+
+## Architecture
 
 Four components, one request path from browser to prediction tile:
 
@@ -184,7 +210,7 @@ Four things worth noting about how the four repos work together:
 
 ---
 
-## Status — Bachelor's thesis in progress
+## Outcome & Impact
 
 **This project is an active Bachelor's thesis, not a finished product.** Rough timeline:
 
@@ -205,7 +231,7 @@ A specific submission date is not given here — it is not relevant to this pres
 
 ---
 
-## Technology profile at a glance
+## Stack
 
 | Layer | Technology |
 |---|---|

@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: project
 title: "ThermalGuide — ML-Vorhersage von Thermik und Windfeldern aus GPS-Gleitschirmdaten"
 date: 2025-09-18
 description: "Bachelorarbeit an der ZHAW: ein Full-Stack-System, das aus GPS-Gleitschirmflügen latente Flugzustände via MAP-Schätzung rekonstruiert und damit ein physikalisch strukturiertes, multiplikatives GAM zur Vorhersage von Vertikalwind und Windfeldern trainiert. Vier Teilsysteme – React/MapLibre-Frontend, Django/GeoDjango/PostGIS-Backend, ML-Repo (PyTorch + FastAPI), MkDocs-Dokumentation."
@@ -7,13 +7,23 @@ image: /assets/images/projects/thermaltrack/cover.jpg
 permalink: /projekte/thermaltrack/
 lang: de
 key: project-thermaltrack
-sidebar:
-  nav: project-de
 ---
+
+> Full-Stack-System zur Vorhersage von Thermik und Windfeldern über der Region Prättigau–Davos — trainiert auf GPS-Gleitschirmflügen mit rekonstruierten, latenten Flugzuständen.
+
+**Jahr:** 2025–laufend  ·  **Kontext:** ZHAW Bachelorarbeit (B.Sc. Elektrotechnik, Betreuung Prof. Karl Rege)  ·  **Rolle:** Einzelentwicklung
 
 ![ThermalGuide — interaktive Thermik- und Windfeldvorhersage für die Region Prättigau–Davos, gerendert über die frontend-seitige MapLibre-Karte mit 3D-Gelände]({{ '/assets/images/projects/thermaltrack/cover.jpg' | relative_url }})
 
-## Überblick
+**TL;DR**
+- **Problem:** Thermik und Windfelder in den Alpen vorhersagen – aus Lagrange-Sensordaten (Gleitschirm-GPS), bei denen Heading, Airspeed und Wind **latent** sind.
+- **Meine Rolle:** Einzelentwicklung — Ingest/Enrichment-Pipeline, MAP-Solver für latente Flugzustände, physikalisch strukturiertes Block-GAM, FastAPI-Inferenzserver, Frontend, Docs-Site.
+- **Ergebnis:** 4 separate Repos mit end-to-end Datenpfad; MAP-Solver v1 gegen Dense-Debug auf 1e-6° validiert; hierarchisches Block-GAM trainierbar, Modellregistry + Inferenzserver laufen; ~60 M Zeilen aus ~11 k Flügen (Region Prättigau–Davos).
+- **Stack:** Python (~112 k LOC), TypeScript (~21 k LOC), Django 5 + GeoDjango + PostGIS, Celery + Redis, PyTorch (GPU), FastAPI, React 19 + MapLibre GL 5 + deck.gl 9, MkDocs + Obsidian.
+
+---
+
+## Kontext
 
 **ThermalGuide** ist meine laufende Bachelorarbeit im Studiengang *B.Sc. Elektrotechnik* an der **ZHAW** (Prüfungsausschuss: Prof. Karl Rege). Ziel ist ein **vorhersagefähiges Modell für Thermik und Windfelder** in der Region Prättigau–Davos, das aus **GPS-Trajektorien von Gleitschirmflügen** lernt – also aus Lagrange-Sensordaten. Das bedeutet: der "Sensor" (der Gleitschirm) bewegt sich selbst mit dem zu beobachtenden Feld, die direkten Messgrössen (Groundspeed, GPS-Höhe, Vario) sind nur indirekte Zeugen von Luftmasse und Vertikalwind. Die gesuchten Grössen – Heading, Airspeed, lokaler Wind – sind **latent** und müssen vor dem eigentlichen Lernen aus der Trajektorie rekonstruiert werden.
 
@@ -21,7 +31,23 @@ Das System besteht aus **vier separaten Repositories**, die zusammen einen durch
 
 ---
 
-## Systemarchitektur
+## Meine Rolle
+
+Einzelentwicklung einer laufenden Bachelorarbeit (Betreuung Prof. Karl Rege, ZHAW):
+
+- **Ingest-Pipeline:** XContest-Webscraper (Tor + Multi-Account-Auth, undetected-chromedriver), eigener IGC-Parser als Django-freie Bibliothek.
+- **Datenarchitektur:** RAW → CANONICAL → PRODUCTS, Architektur-Lint mit 20+ Regeln (`make arch-lint`).
+- **Enrichment:** ICON-DREAM, ERA5, Payerne-Sonden und Hesse-250 m server-seitig auf Flugtrackpunkte gejoint.
+- **MAP-Solver:** Rekonstruktion latenter Flugzustände (Heading/Wind/Airspeed) per Gauss-Newton-MAP auf tridiagonaler Normalgleichung, O(T) pro Flug.
+- **Hierarchisches Energie-Block-GAM:** multiplikatives Modell mit physikalisch motivierten Blöcken, Block-Coordinate-Descent, eigene B-Spline-/Basis-Infrastruktur auf GPU.
+- **Inferenzserver:** FastAPI mit GPU-Backend, Model-Registry mit Auto-Discovery, eigenes Tile-Format (TTDT v1).
+- **Frontend:** React 19 + MapLibre GL 5 + deck.gl 9, 3D-Gelände via Terrain-RGB, Apache Arrow IPC für 3D-Trajektorien.
+- **Docs-Site:** Obsidian → MkDocs Material, cross-platform Aggregations-Pipeline, GitHub-Actions-Deploy.
+- **Wissenschaftliche Arbeit:** wöchentliche Betreuertermine, Dokumentation im Obsidian-Vault, schriftliche Arbeit.
+
+---
+
+## Architektur
 
 Vier Komponenten, ein Request-Pfad vom Browser zum Vorhersage-Tile:
 
@@ -184,7 +210,7 @@ Vier Besonderheiten der Zusammenarbeit zwischen den Repos:
 
 ---
 
-## Status — laufende Bachelorarbeit
+## Ergebnis & Impact
 
 **Dieses Projekt ist die aktive Bachelorarbeit, nicht ein abgeschlossenes Produkt.** Zeitlicher Stand:
 
@@ -205,7 +231,7 @@ Ein offizieller Abgabetermin wird hier nicht genannt, weil er für die Darstellu
 
 ---
 
-## Technologisches Profil auf einen Blick
+## Tech-Stack
 
 | Ebene | Technologie |
 |---|---|
