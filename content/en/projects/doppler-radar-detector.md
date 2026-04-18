@@ -11,15 +11,27 @@ sidebar:
   nav: project-en
 ---
 
+> 24 GHz radar that measures a target's speed, distance and angle in real time on a microcontroller — without an FPGA, and with ML-based angle estimation from raw I/Q.
+
+**Year:** 2025  ·  **Context:** ZHAW module PM4 (spring 2025), 3-person team  ·  **Role:** Sampling + DSP on the STM32, ML angle estimation, desktop app; contributions on the analog front-end
+
 ![Prototyping setup – Python live UI, signal plots on the scope, radar board on the bench]({{ '/assets/images/projects/doppler-radar/cover.jpg' | relative_url }})
 
-## Intro
+**TL;DR**
+- **Problem:** Measure speed, range *and* angle — on an STM32 instead of an FPGA, and without a phased antenna array.
+- **My role:** Sampling and signal processing on the STM32 (dual-ADC/DMA/FFT, FreeRTOS), ML angle estimation, desktop app; contributions on the analog front-end.
+- **Outcome:** Working end-to-end chain from 24 GHz baseband to PC UI; ML angle estimation at ~10° error vs. camera ground truth; MCU DSP pipeline (dual-ADC I/Q lock-step, circular DMA, CMSIS-DSP FFT) drop-free on a 168 MHz Cortex-M4.
+- **Stack:** STM32F429 (FreeRTOS, CMSIS-DSP, TouchGFX), ESP32 (ESP-IDF), C/C++, Python (FastAPI, PyTorch, OpenCV, YOLOv8 for labeling), custom analog/RF board (KiCad).
+
+---
+
+## Context
 
 A **24 GHz radar** that measures a target's speed, distance **and** angle — real-time signal processing entirely on a microcontroller, without an FPGA. Angle estimation is done by a **custom neural network trained on I/Q baseband data**; detections are streamed live over WiFi to a PC UI. Team project for ZHAW module **PM4 (spring 2025)** with Bryan Uhlmann and Benjamin Tschopp.
 
 ---
 
-## Overview
+## Problem & Goal
 
 Three quantities are extracted from the reflected radar signal:
 
@@ -30,6 +42,15 @@ Three quantities are extracted from the reflected radar signal:
 The central design constraint was that there is **no FPGA**: all acquisition and processing has to run on an STM32F429. That means the entire path — dual-ADC sampling, DMA, FFT, feature extraction — has to be deterministic and drop-free under real-time load.
 
 **YOLOv8 was not used for angle estimation.** It is used purely for generating **ground-truth labels**: a camera records the target alongside the radar, YOLO locates the target in the image, its pixel position is converted into a true angle, and that angle is the supervision signal for training the radar ML model.
+
+---
+
+## My Role
+
+Three-person team project. Ownership split:
+
+- **Me (Dennis):** Sampling and signal processing on the STM32 (dual-ADC I/Q lock-step, circular DMA, CMSIS-DSP FFT, FreeRTOS task layout), ML angle estimation (training on raw I/Q, camera-based YOLOv8 labeling), desktop application (live visualization, FastAPI backend), contributions to the analog front-end.
+- **Bryan Uhlmann & Benjamin Tschopp:** Filter stage on the analog board, hardware testing / validation campaign.
 
 ---
 
@@ -45,7 +66,7 @@ The central design constraint was that there is **no FPGA**: all acquisition and
 
 ---
 
-## System architecture
+## Architecture
 
 ![System block diagram: STM32 dev board, radar module with Q&I output, radar board with bandpass filters and power electronics]({{ '/assets/images/projects/doppler-radar/block-diagram.png' | relative_url }})
 
@@ -56,15 +77,6 @@ Full schematic of the radar board: [`schematic.pdf`](https://github.com/DennisRa
 - **STM32F429** — the core: real-time acquisition and signal processing
 - **ESP32 (WLAN module)** — today a WiFi bridge; the intended platform for the ML inference going forward
 - **PC application** — primary UI, ML training, data labeling
-
----
-
-## Tech stack
-
-- **MCUs:** STM32F429 (Discovery board), ESP32 (ESP-IDF)
-- **Languages:** C (bare-metal + FreeRTOS), C++ (TouchGFX), Python 3
-- **Libraries:** STM32 HAL, **CMSIS-DSP** (`arm_cfft_f32`), TouchGFX, Ultralytics YOLOv8 (for labeling), FastAPI, OpenCV, PyTorch
-- **Hardware:** custom analog/radar board (KiCad), 24 GHz radar modules (CW + FMCW), power-latch circuit
 
 ---
 
@@ -144,7 +156,14 @@ Architecture: **FastAPI backend** receives the stream forwarded by the ESP32; Py
 
 ---
 
-## Validation
+## Outcome & Impact
+
+- A working **real-time signal pipeline without an FPGA** — the core proof of the project.
+- **ML-based angle estimation** from raw I/Q data, validated against camera ground truth, ~10° accuracy.
+- Complete end-to-end signal chain from the 24 GHz baseband to a PC UI with WiFi live streaming.
+- Cleanly modularized firmware, reproducible hardware, documented test campaign.
+
+### Validation
 
 | Test | Expected | Measured | Verdict |
 |---|---|---|---|
@@ -158,12 +177,12 @@ Architecture: **FastAPI backend** receives the stream forwarded by the ESP32; Py
 
 ---
 
-## Result
+## Stack
 
-- A working **real-time signal pipeline without an FPGA** — the core proof of the project.
-- **ML-based angle estimation** from raw I/Q data, validated against camera ground truth, ~10° accuracy.
-- Complete end-to-end signal chain from the 24 GHz baseband to a PC UI with WiFi live streaming.
-- Cleanly modularized firmware, reproducible hardware, documented test campaign.
+- **MCUs:** STM32F429 (Discovery board), ESP32 (ESP-IDF)
+- **Languages:** C (bare-metal + FreeRTOS), C++ (TouchGFX), Python 3
+- **Libraries:** STM32 HAL, **CMSIS-DSP** (`arm_cfft_f32`), TouchGFX, Ultralytics YOLOv8 (for labeling), FastAPI, OpenCV, PyTorch
+- **Hardware:** custom analog/radar board (KiCad), 24 GHz radar modules (CW + FMCW), power-latch circuit
 
 ---
 

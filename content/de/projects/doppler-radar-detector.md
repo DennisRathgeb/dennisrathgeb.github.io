@@ -11,15 +11,27 @@ sidebar:
   nav: project-de
 ---
 
+> 24-GHz-Radar, das Geschwindigkeit, Distanz und Winkel eines Ziels in Echtzeit auf dem Mikrocontroller misst — ohne FPGA, mit ML-basierter Winkelschätzung auf I/Q-Rohdaten.
+
+**Jahr:** 2025  ·  **Kontext:** ZHAW-Modul PM4 (FS25), 3er-Team  ·  **Rolle:** Sampling + DSP auf STM32, ML-Winkelschätzung, Desktop-App; Mitarbeit Analog-Frontend
+
 ![Prototyping-Setup – Python-Live-UI, Signalmessungen auf dem Scope, Radar-Board auf dem Tisch]({{ '/assets/images/projects/doppler-radar/cover.jpg' | relative_url }})
 
-## Einleitung
+**TL;DR**
+- **Problem:** Geschwindigkeit, Distanz *und* Winkel messen – auf einem STM32 statt FPGA, und ohne zusätzliches phased antenna array.
+- **Meine Rolle:** Sampling und Signalverarbeitung auf dem STM32 (Dual-ADC/DMA/FFT, FreeRTOS), ML-Winkelschätzung, Desktop-App; Mitarbeit am Analog-Frontend.
+- **Ergebnis:** Lauffähige End-to-End-Kette vom 24-GHz-Basisband bis zur PC-UI; ML-Winkelschätzung mit ~10° Abweichung vs. Kamera-Ground-Truth; MCU-DSP-Pipeline (Dual-ADC im I/Q-Lock-Step, zirkulärer DMA, CMSIS-DSP-FFT) drop-free auf 168 MHz Cortex-M4.
+- **Stack:** STM32F429 (FreeRTOS, CMSIS-DSP, TouchGFX), ESP32 (ESP-IDF), C/C++, Python (FastAPI, PyTorch, OpenCV, YOLOv8 fürs Labeling), Custom Analog/RF-Board (KiCad).
+
+---
+
+## Kontext
 
 Ein **24-GHz-Radar**, das Geschwindigkeit, Distanz **und** Winkel eines Ziels misst — Echtzeitverarbeitung vollständig auf dem Mikrocontroller, ohne FPGA. Die Winkelschätzung übernimmt ein **eigenes, auf I/Q-Rohdaten trainiertes neuronales Netz**; die Detektionen werden live über WiFi auf eine PC-UI gestreamt. Teamprojekt im ZHAW-Modul **PM4 (FS25)** mit Bryan Uhlmann und Benjamin Tschopp.
 
 ---
 
-## Überblick
+## Problem & Ziel
 
 Das System misst drei Grössen aus dem reflektierten Radarsignal:
 
@@ -30,6 +42,15 @@ Das System misst drei Grössen aus dem reflektierten Radarsignal:
 Die zentrale Design-Constraint war der Verzicht auf ein FPGA: die gesamte Signalerfassung und -verarbeitung läuft auf einem STM32F429. Das bedeutet, der komplette Pfad — Dual-ADC-Abtastung, DMA, FFT, Feature-Extraktion — muss deterministisch und ohne Sample-Verluste durchgetaktet sein.
 
 **YOLOv8 wurde nicht für die Winkelschätzung verwendet**, sondern ausschliesslich für die Erzeugung von **Ground-Truth-Labels**: eine Kamera nimmt das Ziel parallel zum Radar auf, YOLO bestimmt seine Position im Bild, daraus ergibt sich der wahre Winkel — mit dem dann das Radar-ML-Modell trainiert wurde.
+
+---
+
+## Meine Rolle
+
+3er-Teamprojekt. Aufteilung der Verantwortungen:
+
+- **Ich (Dennis):** Sampling und Signalverarbeitung auf dem STM32 (Dual-ADC im I/Q-Lock-Step, zirkulärer DMA, CMSIS-DSP-FFT, FreeRTOS-Task-Modell), ML-Winkelschätzung (Training auf I/Q-Rohdaten, kamerabasiertes YOLOv8-Labeling), Desktop-Anwendung (Live-Visualisierung, FastAPI-Backend), Mitarbeit am Analog-Frontend.
+- **Bryan Uhlmann & Benjamin Tschopp:** Filter-Stage auf dem Analog-Board, Hardware-Tests / Validierungskampagne.
 
 ---
 
@@ -45,7 +66,7 @@ Die zentrale Design-Constraint war der Verzicht auf ein FPGA: die gesamte Signal
 
 ---
 
-## Systemarchitektur
+## Architektur
 
 ![System-Blockdiagramm: STM32 Dev Board, Radarmodul mit Q&I-Ausgang, Radar-Board mit Bandpass-Filtern und Leistungselektronik]({{ '/assets/images/projects/doppler-radar/block-diagram.png' | relative_url }})
 
@@ -56,15 +77,6 @@ Vollständiger Schaltplan der Radarplatine: [`schematic.pdf`](https://github.com
 - **STM32F429** — das Herzstück: Datenerfassung und Signalverarbeitung in Echtzeit
 - **ESP32 (WLAN-Modul)** — aktuell WiFi-Bridge; mittelfristig Plattform für die ML-Inferenz
 - **PC-Anwendung** — Haupt-UI, ML-Training, Datenlabeling
-
----
-
-## Tech-Stack
-
-- **MCU:** STM32F429 (Discovery Board), ESP32 (ESP-IDF)
-- **Sprachen:** C (Bare-Metal + FreeRTOS), C++ (TouchGFX), Python 3
-- **Libraries:** STM32 HAL, **CMSIS-DSP** (`arm_cfft_f32`), TouchGFX, Ultralytics YOLOv8 (für Labeling), FastAPI, OpenCV, PyTorch
-- **Hardware:** eigenes Analog-/Radar-Board (KiCad), 24-GHz-Radarmodule (CW + FMCW), Power-Latch-Schaltung
 
 ---
 
@@ -144,7 +156,14 @@ Die Architektur: **FastAPI-Backend** empfängt die vom ESP32 gestreamten Daten, 
 
 ---
 
-## Validierung
+## Ergebnis & Impact
+
+- Funktionierende **Echtzeit-Signalpipeline ohne FPGA** — das war der Kern-Beweis des Projekts.
+- **ML-basierte Winkelbestimmung** aus I/Q-Rohdaten, validiert mit Kamera-Ground-Truth, ~10° Genauigkeit.
+- Komplette End-to-End-Signalkette vom 24-GHz-Basisband bis zur PC-UI mit Live-Streaming über WiFi.
+- Sauber modularisierte Firmware, reproduzierbare Hardware, dokumentierte Testkampagne.
+
+### Validierung
 
 | Test | Erwartet | Gemessen | Ergebnis |
 |---|---|---|---|
@@ -158,12 +177,12 @@ Die Architektur: **FastAPI-Backend** empfängt die vom ESP32 gestreamten Daten, 
 
 ---
 
-## Ergebnis
+## Tech-Stack
 
-- Funktionierende **Echtzeit-Signalpipeline ohne FPGA** — das war der Kern-Beweis des Projekts.
-- **ML-basierte Winkelbestimmung** aus I/Q-Rohdaten, validiert mit Kamera-Ground-Truth, ~10° Genauigkeit.
-- Komplette End-to-End-Signalkette vom 24-GHz-Basisband bis zur PC-UI mit Live-Streaming über WiFi.
-- Sauber modularisierte Firmware, reproduzierbare Hardware, dokumentierte Testkampagne.
+- **MCU:** STM32F429 (Discovery Board), ESP32 (ESP-IDF)
+- **Sprachen:** C (Bare-Metal + FreeRTOS), C++ (TouchGFX), Python 3
+- **Libraries:** STM32 HAL, **CMSIS-DSP** (`arm_cfft_f32`), TouchGFX, Ultralytics YOLOv8 (für Labeling), FastAPI, OpenCV, PyTorch
+- **Hardware:** eigenes Analog-/Radar-Board (KiCad), 24-GHz-Radarmodule (CW + FMCW), Power-Latch-Schaltung
 
 ---
 
