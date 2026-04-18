@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: project
 title: Transatlantic Aircraft Ferry – Bellanca 260
 date: 2023
 description: "Restoration and ferry of a 1961 Bellanca 260, USA → Switzerland. ~14,600 km / 76 h."
@@ -7,8 +7,6 @@ image: /assets/images/projects/bellanca-ferry/cover.jpg
 permalink: /en/projects/bellanca-ferry/
 lang: en
 key: project-bellanca-ferry
-sidebar:
-  nav: project-en
 ---
 
 > Restoration and transatlantic ferry of a 1961 Bellanca 260 from California to Switzerland.

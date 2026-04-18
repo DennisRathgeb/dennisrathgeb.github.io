@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: project
 title: "NalpSolar BuildTrack — Chrome-Extension für Solarpark-Baustelle"
 date: 2025
 description: "Chrome-Extension mit SharePoint-Anbindung und MapLibre-Karte zur Echtzeit-Visualisierung der Solarpark-Baustelle NalpSolar bei STRABAG. Multi-Shell-Architektur (Chrome, SPFx, PCF) mit integriertem KI-Assistenten."
@@ -7,8 +7,6 @@ image: /assets/images/projects/nalps-chrome-extension/cover.jpg
 permalink: /projekte/nalps-chrome-extension/
 lang: de
 key: project-nalps-chrome-extension
-sidebar:
-  nav: project-de
 ---
 
 > Produktiv bei STRABAG eingesetzte Chrome-Extension, die die Stammdaten der Solarpark-Baustelle NalpSolar räumlich in einem Swisstopo-Luftbild visualisiert – inkl. integriertem KI-Agent.

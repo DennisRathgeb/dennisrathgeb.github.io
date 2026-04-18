@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: project
 title: "Radar-Detektor (STM32 + ESP32)"
 date: 2025
 description: "24-GHz-Radarsystem: Echtzeit-Signalverarbeitung auf dem Mikrocontroller ohne FPGA, WiFi-Livestream an eine PC-UI und ML-basierte Winkelerkennung aus I/Q-Daten."
@@ -7,8 +7,6 @@ image: /assets/images/projects/doppler-radar/cover.jpg
 permalink: /projekte/doppler-radar-detector/
 lang: de
 key: project-doppler-radar-detector
-sidebar:
-  nav: project-de
 ---
 
 > 24-GHz-Radar, das Geschwindigkeit, Distanz und Winkel eines Ziels in Echtzeit auf dem Mikrocontroller misst — ohne FPGA, mit ML-basierter Winkelschätzung auf I/Q-Rohdaten.

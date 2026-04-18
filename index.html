@@ -1,23 +1,355 @@
 ---
-layout: article
-title: Dennis Rathgeb
+layout: none
 permalink: /
 lang: de
 key: page-home
-header_nav: global-de
-sidebar:
-  nav: nav-de
-show_title: false
+title: Dennis Rathgeb — Electrical Engineer
 ---
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dennis Rathgeb — Electrical Engineer</title>
+  <meta name="description" content="Dennis Rathgeb — Elektroingenieur aus der Schweiz. Embedded Systems, Signalverarbeitung und angewandtes Machine Learning. Ich baue reale Systeme von Hardware bis Software.">
+  <link rel="icon" href="{{ '/favicon.ico' | relative_url }}">
 
-<div style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem;">
-  <img src="{{ '/assets/images/portrait.jpg' | relative_url }}" alt="Dennis Rathgeb" style="max-width: 220px; border-radius: 14px;">
-  <div>
-    <h1 style="margin-top: 0;">Dennis Rathgeb</h1>
-    <p><strong>Engineer. Hacker. Developer.</strong></p>
-    <p>
-      <a class="button button--primary" href="{{ '/projekte/' | relative_url }}">Projekte ansehen</a>
-      <a class="button" href="{{ '/lebenslauf/' | relative_url }}">Lebenslauf</a>
-    </p>
-  </div>
-</div>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Geist+Mono:wght@300..700&family=Geist:wght@300..700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <a href="#top" class="nav__brand">Dennis Rathgeb</a>
+    <div class="nav__links">
+      <a href="#projects" class="nav__link">Projekte</a>
+      <a href="#about" class="nav__link is-secondary">Über mich</a>
+      <a href="#contact" class="nav__link">Kontakt</a>
+      <a href="{{ '/en/' | relative_url }}" class="nav__lang">EN</a>
+    </div>
+  </nav>
+
+  <main id="top">
+
+    <!-- ========== HERO ========== -->
+    <section class="sec hero" id="hero">
+      <div>
+        <div class="hero__kicker">
+          <span class="hero__kicker-dot"></span>
+          <span>Zürich · Verfügbar für Projekte</span>
+        </div>
+
+        <h1 class="hero__title">
+          Ingenieur für Systeme,<br>
+          die in der <em>Praxis</em><br>
+          funktionieren.
+        </h1>
+
+        <p class="hero__sub">
+          Elektroingenieur — Embedded Systems, Signalverarbeitung und angewandtes Machine Learning.
+        </p>
+        <p class="hero__lead">
+          Von STM32-Firmware bis zu Datenpipelines und ML-Modellen. Arbeit am Gesamtsystem — Hardware und Software, Ende zu Ende.
+        </p>
+
+        <div class="hero__ctas">
+          <a href="#projects" class="btn btn--primary">
+            Projekte ansehen <span class="btn__arrow">→</span>
+          </a>
+          <a href="#contact" class="btn btn--ghost">
+            Kontakt
+          </a>
+        </div>
+
+        <div class="hero__meta">
+          <div class="hero__meta-item">
+            <span class="hero__meta-key">Standort</span>
+            <span class="hero__meta-val">Urdorf · Schweiz</span>
+          </div>
+          <div class="hero__meta-item">
+            <span class="hero__meta-key">Studium</span>
+            <span class="hero__meta-val">B.Sc. Elektrotechnik, ZHAW</span>
+          </div>
+          <div class="hero__meta-item">
+            <span class="hero__meta-key">Fokus</span>
+            <span class="hero__meta-val">Embedded · DSP · ML</span>
+          </div>
+          <div class="hero__meta-item">
+            <span class="hero__meta-key">Sprachen</span>
+            <span class="hero__meta-val">DE · EN · FR</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__portrait reveal">
+        <img src="{{ '/assets/images/portrait.jpg' | relative_url }}" alt="Dennis Rathgeb" loading="eager">
+        <div class="hero__tag">
+          <span class="hero__tag-dot"></span>
+          <span>Electrical Engineer</span>
+        </div>
+      </div>
+
+      <div class="hero__scroll">
+        <span>Scroll</span>
+        <span class="hero__scroll-line"></span>
+      </div>
+    </section>
+
+    <!-- ========== OVERVIEW ========== -->
+    <section class="sec overview" id="overview">
+      <div class="sec__label">01 · Überblick</div>
+      <h2 class="sec__title" style="max-width: 22ch;">Hardware, Software und integrierte Systeme.</h2>
+
+      <div class="overview__grid">
+        <div class="over__col reveal">
+          <h3>Schwerpunkte</h3>
+          <ul class="over__list">
+            <li><span class="k">Embedded Systems</span><span class="v">STM32 · ESP · nRF · C/C++</span></li>
+            <li><span class="k">Datenverarbeitung & Backend</span><span class="v">Python · APIs · Streaming</span></li>
+            <li><span class="k">Full-Stack Entwicklung</span><span class="v">End-to-End Systemdesign</span></li>
+            <li><span class="k">Signalverarbeitung & ML</span><span class="v">DSP · Applied ML</span></li>
+          </ul>
+        </div>
+
+        <div class="over__col reveal">
+          <h3>Was ich mitbringe</h3>
+          <div class="over__bring">
+            <div class="over__bring-item">
+              <span class="over__bring-num">01</span>
+              <span class="over__bring-text">Starke Kombination aus Hardware- und Software-Engineering.</span>
+            </div>
+            <div class="over__bring-item">
+              <span class="over__bring-num">02</span>
+              <span class="over__bring-text">Erfahrung im Bau kompletter Systeme — nicht nur einzelner Komponenten.</span>
+            </div>
+            <div class="over__bring-item">
+              <span class="over__bring-num">03</span>
+              <span class="over__bring-text">Strukturierte, wartbare Architekturen von Anfang an.</span>
+            </div>
+            <div class="over__bring-item">
+              <span class="over__bring-num">04</span>
+              <span class="over__bring-text">Hands-on-Mentalität mit echter Umsetzungserfahrung.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="over__col reveal">
+          <h3>Kurzprofil</h3>
+          <p>
+            B.Sc. Elektrotechnik (ZHAW), zuvor ETH Zürich. Schwerpunkt: Embedded Systems, DSP und Machine Learning. Projekt- und Praxiserfahrung u.&nbsp;a. bei STRABAG; Offiziersausbildung in der Schweizer Armee.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PROJECTS ========== -->
+    <section class="sec projects" id="projects">
+      <div class="sec__label">02 · Ausgewählte Projekte</div>
+      <div class="projects__head">
+        <h2 class="sec__title" style="max-width: 18ch; margin: 0;">Ausgewählte Projekte.</h2>
+        <p class="projects__lead">Drei Projekte, die die Arbeitsweise zeigen — vom industriellen Feldeinsatz über die Bachelorarbeit bis zur Radar-Sensorik.</p>
+      </div>
+
+      {%- assign featured_slugs = "nalps-chrome-extension,thermaltrack,doppler-radar-detector" | split: "," -%}
+      <div class="listing__grid">
+        {%- for slug in featured_slugs -%}
+          {%- assign outer_idx = forloop.index | prepend: "0" | slice: -2, 2 -%}
+          {%- for project in site.data.projects -%}
+            {%- if project.slug == slug -%}
+              {%- assign loc = project.de | default: project.en -%}
+              <a class="listing-card reveal" href="{{ '/projekte/' | append: project.slug | append: '/' | relative_url }}">
+                <div class="listing-card__img">
+                  <img src="{{ project.image | relative_url }}" alt="{{ loc.title | escape }}" loading="lazy">
+                </div>
+                <div class="listing-card__body">
+                  <span class="listing-card__idx">{{ outer_idx }} / Projekt</span>
+                  <h3 class="listing-card__title">{{ loc.title }}</h3>
+                  <p class="listing-card__sum">{{ loc.summary }}</p>
+                  {%- if project.tags -%}
+                  <ul class="listing-card__tags">
+                    {%- for tag in project.tags limit: 4 -%}
+                    <li>{{ tag }}</li>
+                    {%- endfor -%}
+                  </ul>
+                  {%- endif -%}
+                  <span class="listing-card__cta">Mehr erfahren →</span>
+                </div>
+              </a>
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endfor -%}
+      </div>
+
+      <a href="{{ '/projekte/' | relative_url }}" class="projects__more">
+        Alle Projekte ansehen <span>→</span>
+      </a>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section class="sec about" id="about">
+      <div class="sec__label">03 · Über mich</div>
+
+      <div class="about__grid">
+        <div class="about__media reveal">
+          <img src="{{ '/assets/images/portrait.jpg' | relative_url }}" alt="Dennis Rathgeb Portrait">
+          <div class="about__media-caption">
+            Winterthur, 1997 — Jetzt in Urdorf ZH. Berge, Werkbank, Code.
+          </div>
+        </div>
+
+        <div class="about__text reveal">
+          <p class="lead">
+            Elektroingenieur mit Fokus auf <em>praktische Systeme</em> — Dinge, die wirklich funktionieren, nicht nur auf dem Papier.
+          </p>
+
+          <p>
+            Das Profil verbindet Embedded Systems, Software-Engineering und datenbasierte Modellierung.
+          </p>
+
+          <p>
+            Ich arbeite über den gesamten Stack — von Low-Level-Firmware bis zu Backend und Datenverarbeitung. Schwerpunkt auf sauberer Systemarchitektur und messbaren Ergebnissen.
+          </p>
+
+          <p>
+            Neben der technischen Seite: mehrjährige Projekterfahrung in der Industrie und Offiziersausbildung in der Schweizer Armee. Verantwortung zu übernehmen, Arbeit zu strukturieren und unter realen Bedingungen zu liefern, gehört zum Profil dazu.
+          </p>
+
+          <p>
+            Ausgleich findet sich in den Bergen: Klettern, Skitouren, Gleitschirmfliegen, Laufen.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== APPROACH ========== -->
+    <section class="sec approach" id="approach">
+      <div class="sec__label">04 · Arbeitsweise</div>
+      <h2 class="sec__title" style="max-width: 22ch;">Vier Prinzipien, die jedes Projekt tragen.</h2>
+
+      <ol class="approach__list">
+        <li class="approach__item reveal">
+          <span class="approach__num">01</span>
+          <span class="approach__head">System vor Komponente</span>
+          <span class="approach__body">Fokus auf das Gesamtsystem und seine Schnittstellen — nicht auf einzelne Bausteine in Isolation.</span>
+        </li>
+        <li class="approach__item reveal">
+          <span class="approach__num">02</span>
+          <span class="approach__head">Architektur von Anfang an</span>
+          <span class="approach__body">Saubere, wartbare Strukturen definieren, bevor die erste Zeile Code geschrieben wird.</span>
+        </li>
+        <li class="approach__item reveal">
+          <span class="approach__num">03</span>
+          <span class="approach__head">Physik und Daten</span>
+          <span class="approach__body">Physikalisches Verständnis mit datengetriebenen Methoden kombinieren — robuster als beides allein.</span>
+        </li>
+        <li class="approach__item reveal">
+          <span class="approach__num">04</span>
+          <span class="approach__head">Produktive Systeme statt Demonstratoren</span>
+          <span class="approach__body">Fokus auf Lösungen, die im Produktiveinsatz laufen — mit echten Benutzern, Daten und Fehlern.</span>
+        </li>
+      </ol>
+
+      <div class="stack">
+        <div class="stack__label">Kern-Technologien</div>
+        <div class="stack__tags">
+          <span class="stack__tag">C / C++</span>
+          <span class="stack__tag">Python</span>
+          <span class="stack__tag">TypeScript</span>
+          <span class="stack__tag">STM32</span>
+          <span class="stack__tag">ESP32</span>
+          <span class="stack__tag">nRF</span>
+          <span class="stack__tag">Linux</span>
+          <span class="stack__tag">Docker</span>
+          <span class="stack__tag">FastAPI</span>
+          <span class="stack__tag">React</span>
+          <span class="stack__tag">PostgreSQL / PostGIS</span>
+          <span class="stack__tag">Signal Processing</span>
+          <span class="stack__tag">Machine Learning</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section class="sec contact" id="contact">
+      <div class="sec__label">05 · Kontakt</div>
+
+      <div class="contact__grid">
+        <div>
+          <p class="contact__lead">
+            Offen für Gespräche zu Engineering-Rollen mit Hardware- und Software-Anteil. Rückmeldung in der Regel innerhalb eines Arbeitstags.
+          </p>
+          <a href="mailto:dennis.rathgeb@gmx.ch" class="contact__big">
+            dennis.rathgeb@gmx.ch
+          </a>
+        </div>
+
+        <div class="contact__links reveal">
+          <div class="contact__row">
+            <span class="contact__row-k">E-Mail</span>
+            <a class="contact__row-v" href="mailto:dennis.rathgeb@gmx.ch">dennis.rathgeb@gmx.ch</a>
+          </div>
+          <div class="contact__row">
+            <span class="contact__row-k">GitHub</span>
+            <a class="contact__row-v" href="https://github.com/DennisRathgeb" target="_blank" rel="noopener">@DennisRathgeb ↗</a>
+          </div>
+          <div class="contact__row">
+            <span class="contact__row-k">Standort</span>
+            <span class="contact__row-v">Urdorf · Kanton Zürich</span>
+          </div>
+          <div class="contact__row">
+            <span class="contact__row-k">Telefon</span>
+            <a class="contact__row-v" href="tel:+41764463092">+41 76 446 30 92</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <span>© {{ site.time | date: "%Y" }} Dennis Rathgeb</span>
+    <span>Gebaut mit Jekyll · Hosted auf GitHub Pages</span>
+  </footer>
+
+  <script>
+    // Nav shadow on scroll
+    (function() {
+      var nav = document.getElementById('nav');
+      var onScroll = function() {
+        if (window.scrollY > 20) nav.classList.add('is-scrolled');
+        else nav.classList.remove('is-scrolled');
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+
+    // Reveal on scroll (progressive enhancement)
+    (function() {
+      var els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window) || !els.length) {
+        els.forEach(function(el){ el.classList.add('is-in'); });
+        return;
+      }
+      // Mark html as JS-capable so CSS can hide reveal targets until observed.
+      document.documentElement.classList.add('has-js');
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-in');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -5% 0px' });
+      els.forEach(function(el){ io.observe(el); });
+      // Safety: if something leaves elements hidden (headless/full-page capture,
+      // tab inactive, etc.), force-reveal after 2s so content is never stuck invisible.
+      setTimeout(function() {
+        els.forEach(function(el){ el.classList.add('is-in'); });
+      }, 2000);
+    })();
+  </script>
+</body>
+</html>

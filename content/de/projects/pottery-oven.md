@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: project
 title: "Töpferofen-Steuerung (STM32)"
 date: 2024
 description: "Eigenentwicklung eines elektrisch beheizten Brennofens inkl. Embedded-Regelung, Leistungselektronik und UI."
@@ -7,8 +7,6 @@ image: /assets/images/projects/kiln/cover.jpg
 permalink: /projekte/pottery-oven/
 lang: de
 key: project-pottery-oven
-sidebar:
-  nav: project-de
 ---
 
 > Eigenentwicklung eines elektrischen Brennofens (~25 L): Mechanik, Leistungselektronik, Embedded-Firmware und UI von Grund auf.

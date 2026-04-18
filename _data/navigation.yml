@@ -1,13 +1,16 @@
 ## Navigation groups — one per language.
 ## Pages reference these by name via `sidebar: { nav: nav-de }` in frontmatter.
+## Note: the home page (/) is a custom 1-pager with its own nav; these groups
+## are used by the theme's header/sidebar on the other pages (/projekte/ and
+## per-project detail pages).
 
 nav-de:
   - title: Projekte
     url: /projekte/
-  - title: Lebenslauf
-    url: /lebenslauf/
+  - title: Über mich
+    url: /#about
   - title: Kontakt
-    url: /kontakt/
+    url: /#contact
   - title: EN
     url: /en/
     lang-switch: true
@@ -15,36 +18,36 @@ nav-de:
 nav-en:
   - title: Projects
     url: /en/projects/
-  - title: Resume
-    url: /en/resume/
+  - title: About
+    url: /en/#about
   - title: Contact
-    url: /en/contact/
+    url: /en/#contact
   - title: DE
     url: /
     lang-switch: true
 
-## Header navs (shown across the top)
+## Header navs (shown across the top on theme-driven pages)
 global-de:
   - titles:
       de: Projekte
     url: /projekte/
   - titles:
-      de: Lebenslauf
-    url: /lebenslauf/
+      de: Über mich
+    url: /#about
   - titles:
       de: Kontakt
-    url: /kontakt/
+    url: /#contact
 
 global-en:
   - titles:
       en: Projects
     url: /en/projects/
   - titles:
-      en: Resume
-    url: /en/resume/
+      en: About
+    url: /en/#about
   - titles:
       en: Contact
-    url: /en/contact/
+    url: /en/#contact
 
 ## Empty / utility nav groups
 empty:

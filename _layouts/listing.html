@@ -1,0 +1,111 @@
+---
+layout: none
+---
+{%- assign _lang = page.lang | default: 'de' -%}
+{%- if _lang == 'en' -%}
+  {%- assign _home         = '/en/' -%}
+  {%- assign _home_hash    = '/en/' -%}
+  {%- assign _projects     = '/en/projects/' -%}
+  {%- assign _project_base = '/en/projects/' -%}
+  {%- assign _other_lang   = 'DE' -%}
+  {%- assign _other_url    = '/' -%}
+  {%- assign _nav_projects = 'Projects' -%}
+  {%- assign _nav_about    = 'About' -%}
+  {%- assign _nav_contact  = 'Contact' -%}
+  {%- assign _cta          = 'Read more' -%}
+  {%- assign _foot_built   = 'Built with Jekyll · Hosted on GitHub Pages' -%}
+{%- else -%}
+  {%- assign _home         = '/' -%}
+  {%- assign _home_hash    = '/' -%}
+  {%- assign _projects     = '/projekte/' -%}
+  {%- assign _project_base = '/projekte/' -%}
+  {%- assign _other_lang   = 'EN' -%}
+  {%- assign _other_url    = '/en/' -%}
+  {%- assign _nav_projects = 'Projekte' -%}
+  {%- assign _nav_about    = 'Über mich' -%}
+  {%- assign _nav_contact  = 'Kontakt' -%}
+  {%- assign _cta          = 'Mehr erfahren' -%}
+  {%- assign _foot_built   = 'Gebaut mit Jekyll · Hosted auf GitHub Pages' -%}
+{%- endif -%}
+<!DOCTYPE html>
+<html lang="{{ _lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }} — Dennis Rathgeb</title>
+  {%- if page.description -%}
+  <meta name="description" content="{{ page.description | escape }}">
+  {%- endif -%}
+  <link rel="icon" href="{{ '/favicon.ico' | relative_url }}">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Geist+Mono:wght@300..700&family=Geist:wght@300..700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <a href="{{ _home | relative_url }}" class="nav__brand">Dennis Rathgeb</a>
+    <div class="nav__links">
+      <a href="{{ _projects | relative_url }}" class="nav__link">{{ _nav_projects }}</a>
+      <a href="{{ _home_hash | append: '#about' | relative_url }}" class="nav__link is-secondary">{{ _nav_about }}</a>
+      <a href="{{ _home_hash | append: '#contact' | relative_url }}" class="nav__link">{{ _nav_contact }}</a>
+      <a href="{{ _other_url | relative_url }}" class="nav__lang">{{ _other_lang }}</a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <header class="listing-hero">
+      <div class="listing-hero__inner">
+        {{ content }}
+      </div>
+    </header>
+
+    <section class="listing">
+      <div class="listing__grid">
+        {%- for project in site.data.projects -%}
+          {%- assign loc = project[_lang] | default: project.de | default: project.en -%}
+          {%- assign idx = forloop.index | prepend: "0" | slice: -2, 2 -%}
+          <a class="listing-card" href="{{ _project_base | append: project.slug | append: '/' | relative_url }}">
+            <div class="listing-card__img">
+              <img src="{{ project.image | relative_url }}" alt="{{ loc.title | escape }}" loading="lazy">
+            </div>
+            <div class="listing-card__body">
+              <span class="listing-card__idx">{{ idx }} / {{ _nav_projects }}</span>
+              <h3 class="listing-card__title">{{ loc.title }}</h3>
+              <p class="listing-card__sum">{{ loc.summary }}</p>
+              {%- if project.tags -%}
+              <ul class="listing-card__tags">
+                {%- for tag in project.tags limit: 5 -%}
+                <li>{{ tag }}</li>
+                {%- endfor -%}
+              </ul>
+              {%- endif -%}
+              <span class="listing-card__cta">{{ _cta }} →</span>
+            </div>
+          </a>
+        {%- endfor -%}
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>© {{ site.time | date: "%Y" }} Dennis Rathgeb</span>
+    <span>{{ _foot_built }}</span>
+  </footer>
+
+  <script>
+    (function() {
+      var nav = document.getElementById('nav');
+      var onScroll = function() {
+        if (window.scrollY > 20) nav.classList.add('is-scrolled');
+        else nav.classList.remove('is-scrolled');
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
+</body>
+</html>

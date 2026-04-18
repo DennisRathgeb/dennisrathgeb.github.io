@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: project
 title: Transatlantische Überführung – Bellanca 260
 date: 2023
 description: "Restauration und Überführung einer Bellanca 260 (1961), USA → Schweiz. ~14 600 km / 76 h."
@@ -7,8 +7,6 @@ image: /assets/images/projects/bellanca-ferry/cover.jpg
 permalink: /projekte/bellanca-ferry/
 lang: de
 key: project-bellanca-ferry
-sidebar:
-  nav: project-de
 ---
 
 > Restauration und transatlantische Überführung einer 1961er Bellanca 260 von Kalifornien in die Schweiz.

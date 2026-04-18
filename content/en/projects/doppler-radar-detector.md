@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: project
 title: "Radar Detector (STM32 + ESP32)"
 date: 2025
 description: "24 GHz radar system: real-time signal processing on the microcontroller without an FPGA, WiFi live-stream to a PC UI, and ML-based angle estimation from I/Q data."
@@ -7,8 +7,6 @@ image: /assets/images/projects/doppler-radar/cover.jpg
 permalink: /en/projects/doppler-radar-detector/
 lang: en
 key: project-doppler-radar-detector
-sidebar:
-  nav: project-en
 ---
 
 > 24 GHz radar that measures a target's speed, distance and angle in real time on a microcontroller — without an FPGA, and with ML-based angle estimation from raw I/Q.

@@ -1,0 +1,107 @@
+---
+layout: none
+---
+{%- assign _lang = page.lang | default: 'de' -%}
+{%- if _lang == 'en' -%}
+  {%- assign _home       = '/en/' -%}
+  {%- assign _home_hash  = '/en/' -%}
+  {%- assign _projects   = '/en/projects/' -%}
+  {%- assign _other_lang = 'DE' -%}
+  {%- assign _other_url  = '/' -%}
+  {%- assign _back       = 'Back to projects' -%}
+  {%- assign _nav_projects = 'Projects' -%}
+  {%- assign _nav_about    = 'About' -%}
+  {%- assign _nav_contact  = 'Contact' -%}
+  {%- assign _foot_built   = 'Built with Jekyll · Hosted on GitHub Pages' -%}
+{%- else -%}
+  {%- assign _home       = '/' -%}
+  {%- assign _home_hash  = '/' -%}
+  {%- assign _projects   = '/projekte/' -%}
+  {%- assign _other_lang = 'EN' -%}
+  {%- assign _other_url  = '/en/' -%}
+  {%- assign _back       = 'Zurück zu den Projekten' -%}
+  {%- assign _nav_projects = 'Projekte' -%}
+  {%- assign _nav_about    = 'Über mich' -%}
+  {%- assign _nav_contact  = 'Kontakt' -%}
+  {%- assign _foot_built   = 'Gebaut mit Jekyll · Hosted auf GitHub Pages' -%}
+{%- endif -%}
+<!DOCTYPE html>
+<html lang="{{ _lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }} — Dennis Rathgeb</title>
+  {%- if page.description -%}
+  <meta name="description" content="{{ page.description | escape }}">
+  {%- endif -%}
+  <link rel="icon" href="{{ '/favicon.ico' | relative_url }}">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Geist+Mono:wght@300..700&family=Geist:wght@300..700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <a href="{{ _home | relative_url }}" class="nav__brand">Dennis Rathgeb</a>
+    <div class="nav__links">
+      <a href="{{ _projects | relative_url }}" class="nav__link">{{ _nav_projects }}</a>
+      <a href="{{ _home_hash | append: '#about' | relative_url }}" class="nav__link is-secondary">{{ _nav_about }}</a>
+      <a href="{{ _home_hash | append: '#contact' | relative_url }}" class="nav__link">{{ _nav_contact }}</a>
+      <a href="{{ _other_url | relative_url }}" class="nav__lang">{{ _other_lang }}</a>
+    </div>
+  </nav>
+
+  <main id="top">
+
+    <header class="project-hero">
+      {%- if page.image -%}
+      <div class="project-hero__bg" style="background-image: url('{{ page.image | relative_url }}');"></div>
+      {%- endif -%}
+      <div class="project-hero__inner">
+        <a href="{{ _projects | relative_url }}" class="project-hero__back">← {{ _back }}</a>
+        {%- if page.date -%}
+          {%- comment -%}
+            `date: 2023` (bare year) is parsed by Jekyll as a Unix timestamp
+            → "%Y" yields 1970. Detect that case and fall back to the integer.
+          {%- endcomment -%}
+          {%- assign _epoch = page.date | date: "%s" | plus: 0 -%}
+          {%- if _epoch > 1000 and _epoch < 100000 -%}
+            {%- assign _year = _epoch -%}
+          {%- else -%}
+            {%- assign _year = page.date | date: "%Y" -%}
+          {%- endif -%}
+          <div class="project-hero__kicker">
+            <span>{{ _year }}</span>
+          </div>
+        {%- endif -%}
+        <h1 class="project-hero__title">{{ page.title }}</h1>
+      </div>
+    </header>
+
+    <article class="prose">
+      {{ content }}
+    </article>
+
+  </main>
+
+  <footer class="foot">
+    <span>© {{ site.time | date: "%Y" }} Dennis Rathgeb</span>
+    <span>{{ _foot_built }}</span>
+  </footer>
+
+  <script>
+    (function() {
+      var nav = document.getElementById('nav');
+      var onScroll = function() {
+        if (window.scrollY > 20) nav.classList.add('is-scrolled');
+        else nav.classList.remove('is-scrolled');
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
+</body>
+</html>

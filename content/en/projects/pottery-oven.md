@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: project
 title: "Pottery Kiln Controller (STM32)"
 date: 2024
 description: "End-to-end build of an electrically heated ceramic kiln, including embedded control, power electronics and UI."
@@ -7,8 +7,6 @@ image: /assets/images/projects/kiln/cover.jpg
 permalink: /en/projects/pottery-oven/
 lang: en
 key: project-pottery-oven
-sidebar:
-  nav: project-en
 ---
 
 > End-to-end build of an electric ceramic kiln (~25 L): mechanics, power electronics, embedded firmware and UI all from scratch.
