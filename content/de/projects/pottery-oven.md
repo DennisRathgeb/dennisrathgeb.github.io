@@ -11,9 +11,21 @@ sidebar:
   nav: project-de
 ---
 
+> Eigenentwicklung eines elektrischen Brennofens (~25 L): Mechanik, Leistungselektronik, Embedded-Firmware und UI von Grund auf.
+
+**Jahr:** 2024  ·  **Kontext:** Privatprojekt  ·  **Rolle:** End-to-end Einzelentwicklung
+
 ![Töpferofen im Brennvorgang – glühende Heizwicklung in hexagonaler Feuerfestkammer]({{ '/assets/images/projects/kiln/cover.jpg' | relative_url }})
 
-## Überblick
+**TL;DR**
+- **Problem:** Einen selbstgebauten Brennofen mit reproduzierbaren, definiert gesteuerten Brennprofilen realisieren.
+- **Meine Rolle:** Alles – Stahlbau, Feuerfest-Isolierung, 3-phasige Heizauslegung (~9 kW), Custom-PCB, Firmware, UI.
+- **Ergebnis:** Lauffähiger Ofen mit kaskadierter Regelung (äusserer P + innerer PI auf EMA-Gradient), 20-s-Duty-Cycle auf 3× SSR, persistenter Speicher für 10 Brennprogramme × 10 Schritte, Hardware-Türkontakt als Failsafe, max. erreichte Temperatur ~1200 °C.
+- **Stack:** STM32F030C8 (Cortex-M0), C (bare-metal), STM32 HAL, CMSIS-DSP, MAX31855 (Thermoelement), SSR-Schaltung, LCD1602 + Rotary Encoder, Custom-PCB.
+
+---
+
+## Kontext
 
 Entwicklung und Bau eines vollständig eigenen **elektrischen Töpferofens (~25 L)** inklusive Leistungselektronik, Embedded-Firmware und Benutzerinterface.
 
@@ -23,7 +35,19 @@ Neben der Firmware wurde auch die komplette Hardware umgesetzt – vom mechanisc
 
 ---
 
-## Systemarchitektur
+## Meine Rolle
+
+Einzelentwicklung, end-to-end:
+
+- Thermischer Aufbau: Stahlgehäuse, Feuerfest-Isolierung, Heizwicklung (~9 kW, 3-phasig)
+- Leistungselektronik: SSR-Ansteuerung, Duty-Cycle-Auslegung, Sicherheitsabschaltung
+- Custom-PCB: MCU-Board mit Sensorik und Schnittstellen (SPI/I2C/USART/RTC/TIM)
+- Firmware: kaskadierte Regelung, Kühlbrems-Regler, Interrupt-getriebenes Design, Flash-Persistenz
+- UI: LCD + Encoder mit menügeführter Bedienung und Programm-Editor
+
+---
+
+## Architektur
 
 Das System besteht aus drei Hauptkomponenten:
 
@@ -42,25 +66,6 @@ Das System besteht aus drei Hauptkomponenten:
    - Custom-PCB mit Mikrocontroller, Sensorik und Schnittstellen
    - Temperaturmessung über Thermoelement + MAX31855 (SPI)
    - Lokales UI (LCD + Encoder + Taster)
-
----
-
-## Tech-Stack
-
-- **MCU:** STM32F030C8 (ARM Cortex-M0)
-- **Sprache:** C (C11, Bare-Metal)
-- **Libraries:** STM32 HAL, CMSIS-DSP
-- **Peripherie:**
-  - SPI (Temperaturmessung, MAX31855)
-  - I2C (LCD1602 RGB)
-  - USART (Debug)
-  - RTC (1 Hz Regelzyklus)
-  - TIM3 (Encoder Input)
-- **Hardware:**
-  - Custom-PCB (MCU + SSR-Ansteuerung + Sensorik)
-  - 3× SSR für Drehstrom-Heizkreise
-  - Türkontakt (Failsafe)
-  - Drehencoder + Taster für UI
 
 ---
 
@@ -141,7 +146,7 @@ Deutlich stabileres Verhalten als klassische PID-Regler bei trägen, nichtlinear
 
 ---
 
-## Ergebnis
+## Ergebnis & Impact
 
 Ein vollständig funktionsfähiger, selbst gebauter Brennofen mit:
 
@@ -149,6 +154,25 @@ Ein vollständig funktionsfähiger, selbst gebauter Brennofen mit:
 - stabiler Regelung auch bei langsamer Dynamik
 - robuster, eigenentwickelter Embedded-Architektur
 - durchgängiger Integration von Mechanik, Elektronik und Software
+
+---
+
+## Tech-Stack
+
+- **MCU:** STM32F030C8 (ARM Cortex-M0)
+- **Sprache:** C (C11, Bare-Metal)
+- **Libraries:** STM32 HAL, CMSIS-DSP
+- **Peripherie:**
+  - SPI (Temperaturmessung, MAX31855)
+  - I2C (LCD1602 RGB)
+  - USART (Debug)
+  - RTC (1 Hz Regelzyklus)
+  - TIM3 (Encoder Input)
+- **Hardware:**
+  - Custom-PCB (MCU + SSR-Ansteuerung + Sensorik)
+  - 3× SSR für Drehstrom-Heizkreise
+  - Türkontakt (Failsafe)
+  - Drehencoder + Taster für UI
 
 ---
 

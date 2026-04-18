@@ -11,9 +11,21 @@ sidebar:
   nav: project-en
 ---
 
+> End-to-end build of an electric ceramic kiln (~25 L): mechanics, power electronics, embedded firmware and UI all from scratch.
+
+**Year:** 2024  ·  **Context:** Private project  ·  **Role:** Solo end-to-end
+
 ![Kiln during firing – glowing heating coils in a hexagonal firebrick chamber]({{ '/assets/images/projects/kiln/cover.jpg' | relative_url }})
 
-## Overview
+**TL;DR**
+- **Problem:** Build a self-made kiln that runs reproducible, precisely controlled firing profiles.
+- **My role:** Everything — steel frame, refractory insulation, 3-phase heating layout (~9 kW), custom PCB, firmware, UI.
+- **Outcome:** Working kiln with cascaded control (outer P + inner PI on an EMA gradient), 20 s duty cycle on 3× SSRs, persistent storage for 10 firing programs × 10 steps each, hardware door interlock as failsafe, max temperature reached ~1200 °C.
+- **Stack:** STM32F030C8 (Cortex-M0), C (bare-metal), STM32 HAL, CMSIS-DSP, MAX31855 (thermocouple), SSR drive, LCD1602 + rotary encoder, custom PCB.
+
+---
+
+## Context
 
 Design and build of a fully self-made **electric pottery kiln (~25 L)** — power electronics, embedded firmware and user interface all done from scratch.
 
@@ -23,7 +35,19 @@ In addition to the firmware, the full hardware was built too — from the mechan
 
 ---
 
-## System architecture
+## My Role
+
+Solo project, end-to-end:
+
+- Thermal assembly: welded steel frame, refractory insulation, heating element winding (~9 kW, three-phase)
+- Power electronics: SSR drive, duty-cycle design, safety cutoff
+- Custom PCB: MCU board with sensing and peripherals (SPI/I2C/USART/RTC/TIM)
+- Firmware: cascaded control, cooling-brake controller, interrupt-driven design, flash persistence
+- UI: LCD + encoder with menu-driven navigation and program editor
+
+---
+
+## Architecture
 
 The system comprises three main components:
 
@@ -42,25 +66,6 @@ The system comprises three main components:
    - Custom PCB with microcontroller, sensing and interfaces
    - Temperature sensing via thermocouple + MAX31855 (SPI)
    - Local UI (LCD + rotary encoder + buttons)
-
----
-
-## Tech stack
-
-- **MCU:** STM32F030C8 (ARM Cortex-M0)
-- **Language:** C (C11, bare-metal)
-- **Libraries:** STM32 HAL, CMSIS-DSP
-- **Peripherals:**
-  - SPI (temperature sensing, MAX31855)
-  - I2C (LCD1602 RGB)
-  - USART (debug)
-  - RTC (1 Hz control tick)
-  - TIM3 (encoder input capture)
-- **Hardware:**
-  - Custom PCB (MCU + SSR drive + sensing)
-  - 3× SSRs for three-phase heating circuits
-  - Door interlock (failsafe)
-  - Rotary encoder + buttons for UI
 
 ---
 
@@ -141,7 +146,7 @@ Markedly more stable behaviour than a flat PID on sluggish, nonlinear systems li
 
 ---
 
-## Result
+## Outcome & Impact
 
 A fully working, hand-built kiln with:
 
@@ -149,6 +154,25 @@ A fully working, hand-built kiln with:
 - stable control even in slow thermal dynamics
 - a robust, self-developed embedded architecture
 - end-to-end integration of mechanics, electronics and software
+
+---
+
+## Stack
+
+- **MCU:** STM32F030C8 (ARM Cortex-M0)
+- **Language:** C (C11, bare-metal)
+- **Libraries:** STM32 HAL, CMSIS-DSP
+- **Peripherals:**
+  - SPI (temperature sensing, MAX31855)
+  - I2C (LCD1602 RGB)
+  - USART (debug)
+  - RTC (1 Hz control tick)
+  - TIM3 (encoder input capture)
+- **Hardware:**
+  - Custom PCB (MCU + SSR drive + sensing)
+  - 3× SSRs for three-phase heating circuits
+  - Door interlock (failsafe)
+  - Rotary encoder + buttons for UI
 
 ---
 
