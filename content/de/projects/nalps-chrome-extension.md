@@ -1,7 +1,7 @@
 ---
 layout: article
 title: "NalpSolar BuildTrack — Chrome-Extension für Solarpark-Baustelle"
-date: 2026
+date: 2025
 description: "Chrome-Extension mit SharePoint-Anbindung und MapLibre-Karte zur Echtzeit-Visualisierung der Solarpark-Baustelle NalpSolar bei STRABAG. Multi-Shell-Architektur (Chrome, SPFx, PCF) mit integriertem KI-Assistenten."
 image: /assets/images/projects/nalps-chrome-extension/cover.jpg
 permalink: /projekte/nalps-chrome-extension/
@@ -11,9 +11,21 @@ sidebar:
   nav: project-de
 ---
 
+> Produktiv bei STRABAG eingesetzte Chrome-Extension, die die Stammdaten der Solarpark-Baustelle NalpSolar räumlich in einem Swisstopo-Luftbild visualisiert – inkl. integriertem KI-Agent.
+
+**Jahr:** 2025–2026  ·  **Kontext:** STRABAG (Produktiveinsatz, Kostenstelle 256-RKDO)  ·  **Rolle:** Einzelentwicklung
+
 ![NalpSolar BuildTrack – Chrome Side Panel mit MapLibre-Karte, Tischpolygonen und Bohrpunkten auf Swisstopo-Luftbild]({{ '/assets/images/projects/nalps-chrome-extension/cover.jpg' | relative_url }})
 
-## Überblick
+**TL;DR**
+- **Problem:** Baustellenteams ein räumliches Echtzeitbild der NalpSolar-Projektdaten geben, ohne eine eigene Backend-Infrastruktur aufzusetzen.
+- **Meine Rolle:** Einzelentwicklung — Architektur, Domänenmodell, Multi-Shell-Release, Karten-Stack, KI-Agent, Ops-Tooling.
+- **Ergebnis:** Produktiver Einsatz bei STRABAG; ein Quelltext → drei Shells (Chrome-Extension, SPFx, PCF); ~45 k LOC TypeScript, 193 Tests, 28+ Agent-Tools mit eigener Quality-Gate-Pipeline.
+- **Stack:** TypeScript 5.7, React 18, Mantine v7, MapLibre GL 4, TanStack Query, Zustand, SharePoint REST + Graph API, OpenAI Responses API, Manifest V3, SPFx, PCF.
+
+---
+
+## Kontext
 
 **NalpSolar BuildTrack** ist eine produktiv bei **STRABAG** eingesetzte Chrome-Extension zur Baustellensteuerung des Solarparks **NalpSolar** (Kraftwerksprojekt Axpo NalpSolar). Die Extension lebt als Chrome Side Panel neben der SharePoint-Site des Projekts und überlagert die Stammdaten der Anlage – Montagetische, Bohrpunkte, Passstücke, Modulträger-Stapel – als farbige Polygone und Punkte auf einem Swisstopo-Luftbild.
 
@@ -32,6 +44,20 @@ Das Projekt ist Einzelentwicklung: Architektur, Domänenmodell, SharePoint-Liste
 - **Koordinatensystem:** Schweizer Landesvermessung LV95 (EPSG:2056), on-the-fly konvertiert auf WGS84 für MapLibre
 - **Basemap:** Swisstopo (Luftbild + topografische Karte, WMTS)
 - **Nutzer:** Planer und Monteure am Bau; Tablet- und Desktop-Arbeitsplätze
+
+---
+
+## Meine Rolle
+
+Einzelentwicklung, end-to-end:
+
+- **Architektur & Kern-Codebase:** 4-Schichten-Modell, `ApiBackend`-Abstraktion, Multi-Shell-Release (Chrome, SPFx, PCF) aus einem `src/`.
+- **Domänenmodell:** Tische, Bohrpunkte, Passstücke, Modulträger-Stapel; Stage-Registry, Selektoren, Stage-Herleitung.
+- **SharePoint-Integration:** 20 Listen-Schemata, REST-Batching + Versionshistorie, Microsoft-Graph-Integration, Power-Automate-Trigger.
+- **Karten-Stack:** MapLibre GL 4, LV95↔WGS84-Transformation, Swisstopo-WMTS, Druck-Layout-Pfad, Ghost-Layer, Farbschemata.
+- **KI-Agent (Layer 1.5):** 28+ Tools, adaptive Context-Cards, Kontext-Kompression, Planner-Subsystem, `make lint-agent`-Quality-Gates.
+- **Ops-Tooling:** CDP-basierter SP-CRUD, Excel→SP-Ingest-Pipeline, SP-Snapshots, Agent-Log-Analyzer, Production-Write-Guards.
+- **Release-Pipelines:** CRA/Craco (Chrome), Gulp (SPFx), pac CLI (PCF), Makefile als einzige Orchestrierung.
 
 ---
 
@@ -118,6 +144,17 @@ Alles wird über ein einziges Makefile orchestriert (`make dev`, `make build`, `
 
 ---
 
+## Ergebnis & Impact
+
+- **Ein Quelltext, drei produktive Shells** (Chrome, SPFx, PCF) über eine sauber definierte `ApiBackend`-Abstraktion. Mock-Backend ermöglicht komplette Entwicklung ohne Chrome- oder SharePoint-Zugriff (`make dev`).
+- **Config-driven an jedem Ort, der sonst rot wird:** Stages, Farben, Map-Presets, PCF-Releases, Agent-Tools, Kontextkarten. Neue Stufe/Umgebung/Tool = Konfigurationseintrag, nicht Code-Fork.
+- **Präzises Geo-Modell** mit LV95↔WGS84-Transformation, Abweichungslayern SOLL→IST, separaten Druck- und Bildschirm-Layoutpfaden.
+- **Voll integrierter KI-Agent** mit Prompt-Routing, adaptiven Kontextkarten, automatischer Kontextkomprimierung, Budget-Tracking, Planner-Subsystem mit Live-Checkboxen und 28+ geprüften Tools – mit eigenem Quality-Gate-Pipeline (`make lint-agent`).
+- **Saubere Arbeitsweise:** 366 Commits über zwei Wochen im Conventional-Commit-Stil, 193 Jest-Tests, strenge Layer-Grenzen, umfangreiche Blueprint-Dokumentation (14 Module, ~6 400 Zeilen).
+- **Produktions-Guardrails:** Production-Write-Guards in den SP-Skripten, `_COPY`-Tabellen-Konvention per `.env`-Flag, Audit-Store (NDJSON) für jede Schreib-Intention, Chrome-Web-Store-Publikations-Checkliste gepflegt.
+
+---
+
 ## Tech-Stack (Auszug)
 
 - **Sprache:** TypeScript 5.7 (strict mode)
@@ -132,17 +169,6 @@ Alles wird über ein einziges Makefile orchestriert (`make dev`, `make build`, `
 - **Build & Release:** CRA via Craco für die Extension, Gulp für SPFx, pac CLI für PCF
 - **Ops:** Python 3.14 in `.venv/`, Chrome mit `--remote-debugging-port=9222` für die CDP-Skripte
 - **Tests:** Jest via `react-scripts` – 193 Tests in 15 Suites
-
----
-
-## Highlights
-
-- **Ein Quelltext, drei produktive Shells** (Chrome, SPFx, PCF) über eine sauber definierte `ApiBackend`-Abstraktion. Mock-Backend ermöglicht komplette Entwicklung ohne Chrome- oder SharePoint-Zugriff (`make dev`).
-- **Config-driven an jedem Ort, der sonst rot wird:** Stages, Farben, Map-Presets, PCF-Releases, Agent-Tools, Kontextkarten. Neue Stufe/Umgebung/Tool = Konfigurationseintrag, nicht Code-Fork.
-- **Präzises Geo-Modell** mit LV95↔WGS84-Transformation, Abweichungslayern SOLL→IST, separaten Druck- und Bildschirm-Layoutpfaden.
-- **Voll integrierter KI-Agent** mit Prompt-Routing, adaptiven Kontextkarten, automatischer Kontextkomprimierung, Budget-Tracking, Planner-Subsystem mit Live-Checkboxen und 28+ geprüften Tools – mit eigenem Quality-Gate-Pipeline (`make lint-agent`).
-- **Saubere Arbeitsweise:** 366 Commits über zwei Wochen im Conventional-Commit-Stil, 193 Jest-Tests, strenge Layer-Grenzen, umfangreiche Blueprint-Dokumentation (14 Module, ~6 400 Zeilen).
-- **Produktions-Guardrails:** Production-Write-Guards in den SP-Skripten, `_COPY`-Tabellen-Konvention per `.env`-Flag, Audit-Store (NDJSON) für jede Schreib-Intention, Chrome-Web-Store-Publikations-Checkliste gepflegt.
 
 ---
 

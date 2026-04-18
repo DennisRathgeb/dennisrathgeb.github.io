@@ -1,7 +1,7 @@
 ---
 layout: article
 title: "NalpSolar BuildTrack — Chrome extension for a solar-park build"
-date: 2026
+date: 2025
 description: "Chrome extension with SharePoint integration and a MapLibre map for real-time visualization of the NalpSolar solar-park construction site at STRABAG. Multi-shell architecture (Chrome, SPFx, PCF) with an integrated AI assistant."
 image: /assets/images/projects/nalps-chrome-extension/cover.jpg
 permalink: /en/projects/nalps-chrome-extension/
@@ -11,9 +11,21 @@ sidebar:
   nav: project-en
 ---
 
+> Chrome extension in production at STRABAG that visualises the master data of the NalpSolar solar-park build spatially on a swisstopo aerial basemap — with an integrated AI agent.
+
+**Year:** 2025–2026  ·  **Context:** STRABAG (production use, cost centre 256-RKDO)  ·  **Role:** Solo build
+
 ![NalpSolar BuildTrack – Chrome side panel with MapLibre map, table polygons and drill points on a swisstopo aerial basemap]({{ '/assets/images/projects/nalps-chrome-extension/cover.jpg' | relative_url }})
 
-## Overview
+**TL;DR**
+- **Problem:** Give the field teams a spatial, real-time view of the NalpSolar project data without standing up a dedicated backend.
+- **My role:** Solo build — architecture, domain model, multi-shell release, map stack, AI agent, ops tooling.
+- **Outcome:** In production at STRABAG; one source tree → three shells (Chrome extension, SPFx, PCF); ~45 k LOC TypeScript, 193 tests, 28+ agent tools with a dedicated quality-gate pipeline.
+- **Stack:** TypeScript 5.7, React 18, Mantine v7, MapLibre GL 4, TanStack Query, Zustand, SharePoint REST + Graph API, OpenAI Responses API, Manifest V3, SPFx, PCF.
+
+---
+
+## Context
 
 **NalpSolar BuildTrack** is a Chrome extension in production use at **STRABAG** that drives site operations for the **NalpSolar** solar-park project (Axpo NalpSolar construction management). The extension lives in the Chrome side panel next to the project's SharePoint site and overlays its master data — assembly tables, drill points, adapter pieces ("Passstücke"), module-carrier stacks — as coloured polygons and points on a swisstopo aerial basemap.
 
@@ -32,6 +44,20 @@ This is a solo build: architecture, domain model, SharePoint list schemas, stage
 - **Coordinate system:** Swiss national grid LV95 (EPSG:2056), converted on the fly to WGS84 for MapLibre
 - **Basemap:** swisstopo (aerial imagery + topographic map, WMTS)
 - **Users:** planners and fitters on site; tablet and desktop workstations
+
+---
+
+## My Role
+
+Solo project, end-to-end:
+
+- **Architecture & core codebase:** 4-layer model, `ApiBackend` abstraction, multi-shell release (Chrome, SPFx, PCF) from a single `src/`.
+- **Domain model:** tables, drill points, adapter pieces, module-carrier stacks; stage registry, selectors, stage derivation.
+- **SharePoint integration:** 20 list schemas, REST batching + version history, Microsoft Graph integration, Power Automate triggers.
+- **Map stack:** MapLibre GL 4, LV95↔WGS84 transformation, swisstopo WMTS, print-layout path, ghost layers, colour schemes.
+- **AI agent (Layer 1.5):** 28+ tools, adaptive context cards, context compression, planner subsystem, `make lint-agent` quality gates.
+- **Ops tooling:** CDP-based SP CRUD, Excel→SP ingest pipeline, SP snapshots, agent-log analyser, production-write guards.
+- **Release pipelines:** CRA/Craco (Chrome), Gulp (SPFx), pac CLI (PCF), Makefile as the single orchestrator.
 
 ---
 
@@ -118,6 +144,17 @@ Everything is orchestrated by a single Makefile (`make dev`, `make build`, `make
 
 ---
 
+## Outcome & Impact
+
+- **One source tree, three production shells** (Chrome, SPFx, PCF) via a cleanly drawn `ApiBackend` abstraction. A mock backend enables full development without Chrome or SharePoint access (`make dev`).
+- **Config-driven everywhere that normally rots:** stages, colours, map presets, PCF releases, agent tools, context cards. A new stage / environment / tool is a config entry, not a code fork.
+- **Precise geo model** with LV95↔WGS84 transformation, SOLL→IST deviation layers, and separate print and screen layout paths.
+- **Fully integrated AI agent** with prompt routing, adaptive context cards, automatic context compression, budget tracking, a planner subsystem with live checkboxes, and 28+ validated tools — with its own quality-gate pipeline (`make lint-agent`).
+- **Clean workflow:** 366 commits over two weeks in conventional-commit style, 193 Jest tests, strict layer boundaries, extensive blueprint documentation (14 module docs, ~6,400 lines).
+- **Production guardrails:** production-write guards in the SP scripts, a `_COPY` table convention switchable via `.env`, an NDJSON audit store for every write intent, and a maintained Chrome Web Store publishing checklist.
+
+---
+
 ## Tech stack (extract)
 
 - **Language:** TypeScript 5.7 (strict mode)
@@ -132,17 +169,6 @@ Everything is orchestrated by a single Makefile (`make dev`, `make build`, `make
 - **Build & release:** CRA via Craco for the extension, Gulp for SPFx, pac CLI for PCF
 - **Ops:** Python 3.14 in `.venv/`, Chrome with `--remote-debugging-port=9222` for the CDP scripts
 - **Tests:** Jest via `react-scripts` — 193 tests across 15 suites
-
----
-
-## Highlights
-
-- **One source tree, three production shells** (Chrome, SPFx, PCF) via a cleanly drawn `ApiBackend` abstraction. A mock backend enables full development without Chrome or SharePoint access (`make dev`).
-- **Config-driven everywhere that normally rots:** stages, colours, map presets, PCF releases, agent tools, context cards. A new stage / environment / tool is a config entry, not a code fork.
-- **Precise geo model** with LV95↔WGS84 transformation, SOLL→IST deviation layers, and separate print and screen layout paths.
-- **Fully integrated AI agent** with prompt routing, adaptive context cards, automatic context compression, budget tracking, a planner subsystem with live checkboxes, and 28+ validated tools — with its own quality-gate pipeline (`make lint-agent`).
-- **Clean workflow:** 366 commits over two weeks in conventional-commit style, 193 Jest tests, strict layer boundaries, extensive blueprint documentation (14 module docs, ~6,400 lines).
-- **Production guardrails:** production-write guards in the SP scripts, a `_COPY` table convention switchable via `.env`, an NDJSON audit store for every write intent, and a maintained Chrome Web Store publishing checklist.
 
 ---
 
