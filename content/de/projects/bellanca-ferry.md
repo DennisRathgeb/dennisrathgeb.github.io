@@ -58,7 +58,7 @@ Das Flugzeug war mehrere Jahre nicht in Betrieb und musste zuerst umfassend gepr
 
 ## Durchführung
 
-Die Überführung erfolgte in mehreren Etappen über Nordamerika und den Nordatlantik, mit Ankunft in den Niederlanden und anschliessendem Weiterflug in die Schweiz.
+Die Überführung erfolgte in mehreren Etappen: **USA → Kanada → Grönland → Island → Schottland → Schweiz**.
 
 - **Distanz:** ~14 600 km
 - **Flugzeit:** ~76 h

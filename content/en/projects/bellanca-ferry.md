@@ -58,7 +58,7 @@ The aircraft had been inactive for several years and first had to be thoroughly 
 
 ## Execution
 
-The ferry was flown in several legs across North America and the North Atlantic, arriving in the Netherlands and then continuing on to Switzerland.
+The ferry was flown in several legs: **USA → Canada → Greenland → Iceland → Scotland → Switzerland**.
 
 - **Distance:** ~14,600 km
 - **Flight Time:** ~76 h
