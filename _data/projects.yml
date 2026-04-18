@@ -1,14 +1,50 @@
-- title: "Pottery Oven"
-  description: "A project focused on capturing nature through lenses."
-  image: "/assets/images/pottery_oven.png"
-  url: "/projects/photograph"
+## Project catalog. Add one entry per project.
+## `slug` controls the URL: /projekte/<slug>/ (DE) and /en/projects/<slug>/ (EN).
+## Detail pages live in content/de/projects/<slug>.md and content/en/projects/<slug>.md.
+##
+## Schema:
+##   slug:    URL slug (kebab-case)
+##   image:   path under /assets/images/
+##   tags:    optional list for filtering later
+##   de:      { title, summary }  ← shown on DE listing
+##   en:      { title, summary }  ← shown on EN listing
 
-- title: "Custom PCB"
-  description: "PCB designed in KiCad Lorem ipsum filling text and filling text."
-  image: "/assets/images/pcb_sidebar_bg1.jpg"
-  url: "/projects/website-design"
+- slug: pottery-oven
+  image: /assets/images/projects/kiln/cover.jpg
+  tags: [embedded, c, stm32, hardware, pid-control, firmware]
+  de:
+    title: "Töpferofen-Steuerung (STM32)"
+    summary: "Eigenentwicklung eines elektrisch beheizten Brennofens inkl. Embedded-Regelung, Leistungselektronik und UI."
+  en:
+    title: "Pottery Kiln Controller (STM32)"
+    summary: "End-to-end build of an electrically heated ceramic kiln: cascaded PID firmware on STM32, 3-phase SSR power stage and a menu-driven LCD + encoder UI."
 
-- title: "Variometer for Paragliding"
-  description: "Custom,solar powered variometer in a small form factor. Icludes a GPS, BLE and Lora Module."
-  image: "/assets/images/pcb_sidebar_bg.jpeg"
-  url: "/projects/data-analysis"
+- slug: custom-pcb
+  image: /assets/images/pcb_sidebar_bg1.jpg
+  tags: [hardware, electronics]
+  de:
+    title: Custom PCB
+    summary: In KiCad entworfenes Platinenprojekt. Platzhaltertext, Platzhaltertext.
+  en:
+    title: Custom PCB
+    summary: PCB designed in KiCad. Placeholder text and placeholder text.
+
+- slug: variometer
+  image: /assets/images/pcb_sidebar_bg.jpeg
+  tags: [hardware, embedded, iot]
+  de:
+    title: Variometer fürs Gleitschirmfliegen
+    summary: Kompaktes, solarbetriebenes Variometer mit GPS-, BLE- und LoRa-Modul.
+  en:
+    title: Variometer for Paragliding
+    summary: Custom, solar powered variometer in a small form factor. Includes GPS, BLE and LoRa modules.
+
+- slug: bellanca-ferry
+  image: /assets/images/projects/bellanca-ferry/cover.jpg
+  tags: [aviation, restoration, operations]
+  de:
+    title: Bellanca 260 – Transatlantiküberführung
+    summary: Restauration und Überführung einer Bellanca 260 (1961), USA → Schweiz. ~14 600 km / 76 h.
+  en:
+    title: Bellanca 260 – Transatlantic Ferry
+    summary: Restoration and ferry of a 1961 Bellanca 260, USA → Switzerland. ~14,600 km / 76 h.

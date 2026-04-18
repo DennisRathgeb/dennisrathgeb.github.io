@@ -1,4 +1,33 @@
 # @start locale config
+## => German
+########################
+de: &DE
+  SUBSCRIBE               : "Abonnieren"
+  READMORE                : "Weiterlesen"
+  SEARCH                  : "Suchen"
+  CANCEL                  : "Abbrechen"
+  VIEWS                   : "Aufrufe"
+  LAST_UPDATED            : "Zuletzt aktualisiert"
+  PREVIOUS                : "ZURÜCK"
+  NEXT                    : "WEITER"
+  ARTICLE_DATE_FORMAT     : "%d.%m.%Y"
+  ARTICLE_LIST_DATE_FORMAT: "%d.%m"
+  STATISTICS              : "[POST_COUNT] Artikel, [PAGE_COUNT] Seiten."
+  LICENSE_ANNOUNCE        : "Dieses Werk ist unter der Lizenz [LICENSE] veröffentlicht."
+  POST_ON_GITHUB          : "Auf GitHub bearbeiten"
+  FOLLOW_ME               : "Auf [NAME] folgen."
+  FOLLOW_US               : "Auf [NAME] folgen."
+  EMAIL_ME                : "E-Mail senden."
+  EMAIL_US                : "E-Mail senden."
+  COPYRIGHT_DATES         : "2026"
+
+de-CH:
+  <<: *DE
+de-DE:
+  <<: *DE
+de-AT:
+  <<: *DE
+
 ## => English
 ########################
 en: &EN

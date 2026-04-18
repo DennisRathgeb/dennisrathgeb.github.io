@@ -1,12 +1,12 @@
 ---
 layout: article
 title: Dennis Rathgeb
-permalink: /
-lang: de
-key: page-home
-header_nav: global-de
+permalink: /en/
+lang: en
+key: page-home-en
+header_nav: global-en
 sidebar:
-  nav: nav-de
+  nav: nav-en
 show_title: false
 ---
 
@@ -16,8 +16,8 @@ show_title: false
     <h1 style="margin-top: 0;">Dennis Rathgeb</h1>
     <p><strong>Engineer. Hacker. Developer.</strong></p>
     <p>
-      <a class="button button--primary" href="{{ '/projekte/' | relative_url }}">Projekte ansehen</a>
-      <a class="button" href="{{ '/lebenslauf/' | relative_url }}">Lebenslauf</a>
+      <a class="button button--primary" href="{{ '/en/projects/' | relative_url }}">View projects</a>
+      <a class="button" href="{{ '/en/resume/' | relative_url }}">Resume</a>
     </p>
   </div>
 </div>

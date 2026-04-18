@@ -1,22 +1,63 @@
-home-nav:
-  - title: Projects
-    url: /content/pages/projects.html
-  - title: Resume
-    url: /content/pages/resume.html
-  - title: Contact
-    url: /content/pages/contact.html
+## Navigation groups — one per language.
+## Pages reference these by name via `sidebar: { nav: nav-de }` in frontmatter.
 
-global:
+nav-de:
+  - title: Projekte
+    url: /projekte/
+  - title: Lebenslauf
+    url: /lebenslauf/
+  - title: Kontakt
+    url: /kontakt/
+  - title: EN
+    url: /en/
+    lang-switch: true
+
+nav-en:
   - title: Projects
-    url: /content/pages/projects.html
+    url: /en/projects/
   - title: Resume
-    url: /content/pages/resume.html
+    url: /en/resume/
   - title: Contact
-    url: /content/pages/contact.html
+    url: /en/contact/
+  - title: DE
+    url: /
+    lang-switch: true
+
+## Header navs (shown across the top)
+global-de:
+  - titles:
+      de: Projekte
+    url: /projekte/
+  - titles:
+      de: Lebenslauf
+    url: /lebenslauf/
+  - titles:
+      de: Kontakt
+    url: /kontakt/
+
+global-en:
+  - titles:
+      en: Projects
+    url: /en/projects/
+  - titles:
+      en: Resume
+    url: /en/resume/
+  - titles:
+      en: Contact
+    url: /en/contact/
+
+## Empty / utility nav groups
 empty:
-  - title: 
-    url: 
-project:
-  - title: Back to Projects
-    url: /content/pages/projects.html
+  - title:
+    url:
+
+## Per-project "back" nav
+project-de:
+  - title: Zurück zu den Projekten
+    url: /projekte/
+    key: project
+
+project-en:
+  - title: Back to projects
+    url: /en/projects/
     key: project

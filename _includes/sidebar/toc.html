@@ -5,19 +5,19 @@
       {%- if _sidebar_nav -%}
       <div class="sidebar-profile">
         <div class="sidebar-profile-image">
-          <img src="\assets\images\profile_pic.jpg" alt="Profile Image" />
+          <img src="{{ '/assets/images/profile_pic.jpg' | relative_url }}" alt="{{ site.author.name }}" />
         </div>
         <div class="sidebar-profile-name">
-          <h1>Dennis Rathgeb</h1>
+          <h1>{{ site.author.name }}</h1>
         </div>
         <div class="sidebar-profile-description">
-          <p>Engineer. Hacker. Developer.</p>
+          <p>{{ site.author.bio }}</p>
         </div>
       </div>
       <ul class="toc">
         {%- for _item in _sidebar_nav -%}
-          <li class="toc-item">
-            <a href="{{ _item.url }}" class="toc-text">{{ _item.title }}</a> <!-- Removed toc-h2 -->
+          <li class="toc-item{% if _item.lang-switch %} toc-item--lang{% endif %}">
+            <a href="{{ _item.url | relative_url }}" class="toc-text">{{ _item.title }}</a>
           </li>
         {%- endfor -%}
       </ul>
