@@ -49,26 +49,6 @@
     title: "Pottery Kiln Controller (STM32)"
     summary: "End-to-end build of an electrically heated ceramic kiln: cascaded PID firmware on STM32, 3-phase SSR power stage and a menu-driven LCD + encoder UI."
 
-- slug: custom-pcb
-  image: /assets/images/pcb_sidebar_bg1.jpg
-  tags: [hardware, electronics]
-  de:
-    title: Custom PCB
-    summary: In KiCad entworfenes Platinenprojekt. Platzhaltertext, Platzhaltertext.
-  en:
-    title: Custom PCB
-    summary: PCB designed in KiCad. Placeholder text and placeholder text.
-
-- slug: variometer
-  image: /assets/images/pcb_sidebar_bg.jpeg
-  tags: [hardware, embedded, iot]
-  de:
-    title: Variometer fürs Gleitschirmfliegen
-    summary: Kompaktes, solarbetriebenes Variometer mit GPS-, BLE- und LoRa-Modul.
-  en:
-    title: Variometer for Paragliding
-    summary: Custom, solar powered variometer in a small form factor. Includes GPS, BLE and LoRa modules.
-
 - slug: bellanca-ferry
   image: /assets/images/projects/bellanca-ferry/cover.jpg
   tags: [aviation, restoration, operations]
