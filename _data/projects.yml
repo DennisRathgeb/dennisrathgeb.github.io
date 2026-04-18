@@ -9,6 +9,36 @@
 ##   de:      { title, summary }  ← shown on DE listing
 ##   en:      { title, summary }  ← shown on EN listing
 
+- slug: nalps-chrome-extension
+  image: /assets/images/projects/nalps-chrome-extension/cover.jpg
+  tags: [typescript, react, chrome-extension, maplibre, sharepoint, spfx, pcf, ai-agent, production, enterprise, strabag]
+  de:
+    title: "NalpSolar BuildTrack — Chrome-Extension für Solarpark-Baustelle"
+    summary: "Chrome-Extension mit SharePoint-Anbindung und MapLibre-Karte zur Echtzeit-Visualisierung der Solarpark-Baustelle NalpSolar bei STRABAG. Multi-Shell-Architektur (Chrome, SPFx, PCF) mit integriertem KI-Assistenten."
+  en:
+    title: "NalpSolar BuildTrack — Chrome extension for a solar-park build"
+    summary: "Chrome extension with SharePoint integration and a MapLibre map for real-time visualization of the NalpSolar solar-park construction site at STRABAG. Multi-shell architecture (Chrome, SPFx, PCF) with an integrated AI assistant."
+
+- slug: thermaltrack
+  image: /assets/images/projects/thermaltrack/cover.jpg
+  tags: [python, typescript, machine-learning, fastapi, django, postgis, maplibre, react, gaussian-additive-model, gis, paragliding, bachelor-thesis, zhaw, fullstack]
+  de:
+    title: "ThermalGuide — ML-Vorhersage von Thermik und Windfeldern aus GPS-Gleitschirmdaten"
+    summary: "Bachelorarbeit an der ZHAW: Full-Stack-System, das aus GPS-Gleitschirmflügen latente Flugzustände via MAP-Schätzung rekonstruiert und damit ein physikalisch strukturiertes, multiplikatives GAM zur Vorhersage von Vertikalwind und Windfeldern trainiert."
+  en:
+    title: "ThermalGuide — ML prediction of thermals and wind fields from paragliding GPS data"
+    summary: "Bachelor's thesis at ZHAW: a full-stack system that recovers latent flight states from GPS paragliding trajectories via MAP estimation and uses them to train a physics-structured multiplicative GAM for vertical-wind and wind-field prediction."
+
+- slug: doppler-radar-detector
+  image: /assets/images/projects/doppler-radar/cover.jpg
+  tags: [embedded, dsp, machine-learning, radar]
+  de:
+    title: "24-GHz-Radar-Detektor"
+    summary: "Radarsystem, das Geschwindigkeit, Distanz und Winkel eines Ziels in Echtzeit misst — Signalverarbeitung auf dem Mikrocontroller, Winkelschätzung über ein eigenes Machine-Learning-Modell."
+  en:
+    title: "24 GHz Radar Detector"
+    summary: "Radar system that measures a target's speed, distance, and angle in real time — signal processing runs on the microcontroller, angle estimation via a custom machine-learning model."
+
 - slug: pottery-oven
   image: /assets/images/projects/kiln/cover.jpg
   tags: [embedded, c, stm32, hardware, pid-control, firmware]
