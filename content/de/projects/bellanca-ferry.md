@@ -1,6 +1,9 @@
 ---
 layout: article
 title: Transatlantische Überführung – Bellanca 260
+date: 2023
+description: "Restauration und Überführung einer Bellanca 260 (1961), USA → Schweiz. ~14 600 km / 76 h."
+image: /assets/images/projects/bellanca-ferry/cover.jpg
 permalink: /projekte/bellanca-ferry/
 lang: de
 key: project-bellanca-ferry
@@ -8,13 +11,25 @@ sidebar:
   nav: project-de
 ---
 
-## Übersicht
+> Restauration und transatlantische Überführung einer 1961er Bellanca 260 von Kalifornien in die Schweiz.
+
+**Jahr:** 2023  ·  **Kontext:** Privates Aviatikprojekt  ·  **Rolle:** Mitarbeit Instandsetzung + mitfliegender Pilot (PPL)
+
+![Bellanca 260 auf einer Wüstenpiste vor rotem Canyon](/assets/images/projects/bellanca-ferry/cover.jpg)
+
+**TL;DR**
+- **Problem:** Eine seit Jahren stillgelegte Bellanca 260 in Kalifornien flugbereit machen und sicher nach Europa überführen.
+- **Meine Rolle:** Mitarbeit bei Inspektion, Instandsetzung und Systemanpassungen; Mitwirkung an Flugplanung und Routenwahl; Teilnahme an Testflügen und an der Überführung als PPL-rated Co-Pilot.
+- **Ergebnis:** Flugzeug wieder airworthy; ~14 600 km / ~76 h Flugzeit / ~51 Tage, Route USA → Kanada → Grönland → Island → Schottland → Schweiz.
+- **Stack:** Pre-Buy Inspection, Annual, Ferry-Tanks, Flight-Manual-Revision, Transatlantik-VFR, PPL.
+
+---
+
+## Kontext
 
 Ein privates Luftfahrtprojekt aus persönlichem Interesse: Ein guter Freund hat in Kalifornien eine ältere **Bellanca 260** gekauft, und ich bin mit in die USA gereist, um das Flugzeug wieder flugbereit zu machen und gemeinsam von dort nach Europa zu überführen.
 
 Das Flugzeug war mehrere Jahre nicht in Betrieb und musste zuerst umfassend geprüft, instand gesetzt und für den Langstreckenflug vorbereitet werden. Ich habe bei der technischen Aufarbeitung und der Planung aktiv mitgearbeitet und war – mit eigener PPL – auch bei den zahlreichen Testflügen und bei der eigentlichen Überführung mit im Cockpit.
-
-![Bellanca 260 auf einer Wüstenpiste vor rotem Canyon](/assets/images/projects/bellanca-ferry/cover.jpg)
 
 ---
 
@@ -28,6 +43,16 @@ Das Flugzeug war mehrere Jahre nicht in Betrieb und musste zuerst umfassend gepr
 - **Reisegeschwindigkeit:** ~320 km/h
 - **Reichweite:** ~1200 km
 - **Zulassung:** VFR
+
+---
+
+## Meine Rolle
+
+- Mitarbeit bei Inspektion und Instandsetzung
+- Technische Entscheidungen und Systemanpassungen
+- Intensive Mitwirkung an Flugplanung und Routenwahl
+- Teilnahme an zahlreichen Testflügen und Verifikation der Flugtauglichkeit
+- Aktive Beteiligung an der Überführung als mitfliegender Pilot (PPL)
 
 ---
 
@@ -72,17 +97,7 @@ Die Überführung erfolgte in mehreren Etappen: **USA → Kanada → Grönland �
 
 ---
 
-## Eigene Beiträge
-
-- Mitarbeit bei Inspektion und Instandsetzung
-- Technische Entscheidungen und Systemanpassungen
-- Intensive Mitwirkung an Flugplanung und Routenwahl
-- Teilnahme an zahlreichen Testflügen und Verifikation der Flugtauglichkeit
-- Aktive Beteiligung an der Überführung als mitfliegender Pilot (PPL)
-
----
-
-## Ergebnis
+## Ergebnis & Impact
 
 Das Flugzeug konnte erfolgreich wieder in einen flugfähigen Zustand gebracht und sicher von den USA nach Europa überführt werden.
 

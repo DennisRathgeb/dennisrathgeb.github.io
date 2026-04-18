@@ -1,6 +1,9 @@
 ---
 layout: article
 title: Transatlantic Aircraft Ferry – Bellanca 260
+date: 2023
+description: "Restoration and ferry of a 1961 Bellanca 260, USA → Switzerland. ~14,600 km / 76 h."
+image: /assets/images/projects/bellanca-ferry/cover.jpg
 permalink: /en/projects/bellanca-ferry/
 lang: en
 key: project-bellanca-ferry
@@ -8,13 +11,25 @@ sidebar:
   nav: project-en
 ---
 
-## Overview
+> Restoration and transatlantic ferry of a 1961 Bellanca 260 from California to Switzerland.
+
+**Year:** 2023  ·  **Context:** Private aviation project  ·  **Role:** Maintenance support + PPL-rated co-pilot on the ferry
+
+![Bellanca 260 on a desert airstrip backed by red canyon walls](/assets/images/projects/bellanca-ferry/cover.jpg)
+
+**TL;DR**
+- **Problem:** Bring a long-inactive Bellanca 260 in California back to airworthy condition and ferry it safely to Europe.
+- **My role:** Inspection, return-to-service, and system modifications; significant involvement in flight planning and routing; test flights and the ferry itself flown as PPL-rated co-pilot.
+- **Outcome:** Aircraft back to fully airworthy; ~14,600 km / ~76 h flight time / ~51 days, route USA → Canada → Greenland → Iceland → Scotland → Switzerland.
+- **Stack:** Pre-buy inspection, annual, ferry tanks, flight-manual revision, transatlantic VFR, PPL.
+
+---
+
+## Context
 
 A private aviation project driven by personal interest: a good friend of mine bought an older **Bellanca 260** in California, and I travelled with him to the US to help get the aircraft airworthy again and ferry it back to Europe together.
 
 The aircraft had been inactive for several years and first had to be thoroughly inspected, returned to service, and prepared for a long-range crossing. I was actively involved in the technical work and the planning — and, being a PPL holder, I also flew along on the many test flights and on the actual ferry itself.
-
-![Bellanca 260 on a desert airstrip backed by red canyon walls](/assets/images/projects/bellanca-ferry/cover.jpg)
 
 ---
 
@@ -28,6 +43,16 @@ The aircraft had been inactive for several years and first had to be thoroughly 
 - **Cruise Speed:** ~320 km/h
 - **Range:** ~1200 km
 - **Certification:** VFR
+
+---
+
+## My Role
+
+- Hands-on involvement in inspection and return-to-service
+- Technical decisions and system modifications
+- Heavy involvement in flight planning and routing
+- Participation in a long sequence of test flights and airworthiness verification
+- Flying along on the ferry itself as a PPL-rated co-pilot
 
 ---
 
@@ -72,17 +97,7 @@ The ferry was flown in several legs: **USA → Canada → Greenland → Iceland 
 
 ---
 
-## Key Contributions
-
-- Hands-on involvement in inspection and return-to-service
-- Technical decisions and system modifications
-- Heavy involvement in flight planning and routing
-- Participation in a long sequence of test flights and airworthiness verification
-- Flying along on the ferry itself as a PPL-rated co-pilot
-
----
-
-## Outcome
+## Outcome & Impact
 
 The aircraft was successfully brought back to a fully airworthy state and safely ferried from the US to Europe.
 
