@@ -1,7 +1,7 @@
 ---
 layout: article
 title: "ThermalGuide — ML-Vorhersage von Thermik und Windfeldern aus GPS-Gleitschirmdaten"
-date: 2025–laufend
+date: 2025-09-18
 description: "Bachelorarbeit an der ZHAW: ein Full-Stack-System, das aus GPS-Gleitschirmflügen latente Flugzustände via MAP-Schätzung rekonstruiert und damit ein physikalisch strukturiertes, multiplikatives GAM zur Vorhersage von Vertikalwind und Windfeldern trainiert. Vier Teilsysteme – React/MapLibre-Frontend, Django/GeoDjango/PostGIS-Backend, ML-Repo (PyTorch + FastAPI), MkDocs-Dokumentation."
 image: /assets/images/projects/thermaltrack/cover.jpg
 permalink: /projekte/thermaltrack/

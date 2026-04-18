@@ -1,7 +1,7 @@
 ---
 layout: article
 title: "ThermalGuide — ML prediction of thermals and wind fields from paragliding GPS data"
-date: 2025–ongoing
+date: 2025-09-18
 description: "Bachelor's thesis at ZHAW: a full-stack system that recovers latent flight states from GPS paragliding trajectories via MAP estimation and uses them to train a physics-structured multiplicative GAM for vertical-wind and wind-field prediction. Four components — React/MapLibre frontend, Django/GeoDjango/PostGIS backend, ML repo (PyTorch + FastAPI), MkDocs documentation."
 image: /assets/images/projects/thermaltrack/cover.jpg
 permalink: /en/projects/thermaltrack/

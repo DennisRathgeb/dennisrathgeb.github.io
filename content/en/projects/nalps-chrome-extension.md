@@ -21,6 +21,8 @@ The goal was to give the field teams a **spatial, real-time view of project data
 
 This is a solo build: architecture, domain model, SharePoint list schemas, stage derivation, rendering pipelines and the AI integration were all designed and implemented by me.
 
+![Survey work on the NalpSolar solar-park construction site — the data visualized by the extension originates here in the field]({{ '/assets/images/projects/nalps-chrome-extension/site.jpg' | relative_url }})
+
 ---
 
 ## Use context
@@ -78,6 +80,8 @@ MapLibre GL 4 with a 15-layer stack:
 
 Coordinates are transformed once via `proj4` from LV95 to WGS84, preserving the precision of the Swiss national grid.
 
+![Module-carrier wizard: pick a table on the map, sequence the mounts, document the build — colored polygons show construction progress per table]({{ '/assets/images/projects/nalps-chrome-extension/ui-wizard.png' | relative_url }})
+
 ---
 
 ## AI assistant (Layer 1.5)
@@ -95,6 +99,8 @@ The extension ships an **in-app AI chat built on the OpenAI Responses API**. The
 - **Three subagent profiles** (`explore_sp`, `analyze`, `planner`) — short-lived, do not compress.
 - **Chat artifacts:** map commands, custom grids, detail panels — produced by the agent and rendered in the right-hand artifact panel.
 - **Quality gates** (`make lint-agent`): knowledge build, OpenAI tool-schema compliance, content quality (stale refs, duplicates, token budgets), routing-gap detection across 675 test prompts.
+
+![AI agent answering a site question, generating an email as an artifact and highlighting the 196 affected tables on the map]({{ '/assets/images/projects/nalps-chrome-extension/ui-agent.png' | relative_url }})
 
 ---
 
@@ -142,13 +148,25 @@ Everything is orchestrated by a single Makefile (`make dev`, `make build`, `make
 
 ## Screenshots
 
-<!-- TODO: add screenshots. Suggested set:
-  1. Chrome side panel with the map view (coloured tables, drill points, aerial basemap)
-  2. Modulträger page with the stack wizard + map
-  3. AI agent with a streamed response + map artifact + plan card
-  4. Browser page with grid + filters + map in the 65/35 split
-  5. Print preview of a module-carrier sign-off
--->
+### Browser page — grid, filters and map in a split view
+
+![Main view: table of tables with filter chips, deviation diagram, and the aerial map with colour-coded construction status]({{ '/assets/images/projects/nalps-chrome-extension/ui-main.png' | relative_url }})
+
+### Preparation — STRABAG primary-construction drawing, driven by SP data
+
+![Preparation page: selection and release workflow with size tolerances and an embedded primary-construction drawing]({{ '/assets/images/projects/nalps-chrome-extension/ui-pdf-export.png' | relative_url }})
+
+### Print pipeline — A4/A3 export with title, table and legend
+
+![Print preview of a module-carrier sign-off in landscape with labelled polygons, legend and a tables table]({{ '/assets/images/projects/nalps-chrome-extension/ui-print-preview.png' | relative_url }})
+
+![Print dialog: format, orientation, optional data table with column picker, legend, send-by-mail]({{ '/assets/images/projects/nalps-chrome-extension/ui-print-dialog.png' | relative_url }})
+
+### Responsive — tablet and mobile workstations on site
+
+![Tablet view: table detail panel with drill points and filter dialog over the map]({{ '/assets/images/projects/nalps-chrome-extension/ui-tablet.png' | relative_url }})
+
+<img src="{{ '/assets/images/projects/nalps-chrome-extension/ui-mobile.png' | relative_url }}" alt="Mobile view: full map with legend and search/filter bar" style="max-width: 320px;">
 
 ---
 

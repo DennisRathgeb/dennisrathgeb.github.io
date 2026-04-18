@@ -21,6 +21,8 @@ Ziel war, den Baustellenteams ein **räumliches Echtzeitbild** der Projektdaten 
 
 Das Projekt ist Einzelentwicklung: Architektur, Domänenmodell, SharePoint-Listenschemata, Stage-Herleitung, Leistungs-Pipelines und die KI-Integration wurden von mir konzipiert und umgesetzt.
 
+![Vermessungsarbeiten auf der Solarpark-Baustelle NalpSolar – die Daten, die die Extension visualisiert, entstehen hier im Feld]({{ '/assets/images/projects/nalps-chrome-extension/site.jpg' | relative_url }})
+
 ---
 
 ## Einsatzkontext
@@ -78,6 +80,8 @@ MapLibre GL 4 mit einem 15-stufigen Layer-Stack:
 
 Koordinaten werden einmalig über `proj4` von LV95 auf WGS84 gebracht; die Präzision der Schweizer Landesvermessung bleibt erhalten.
 
+![Modulträger-Wizard: Tisch auf der Karte wählen, Reihenfolge festlegen, Aufbau dokumentieren – die farbigen Polygone zeigen den Baufortschritt pro Tisch]({{ '/assets/images/projects/nalps-chrome-extension/ui-wizard.png' | relative_url }})
+
 ---
 
 ## KI-Assistent (Layer 1.5)
@@ -95,6 +99,8 @@ Die Extension enthält einen in die App integrierten **KI-Chat auf Basis der Ope
 - **Drei Subagent-Profile** (`explore_sp`, `analyze`, `planner`) – kurzlebig, komprimieren nicht.
 - **Artefakte im Chat:** Map-Kommandos, benutzerdefinierte Grids, Detail-Panels – vom Agent erzeugt und im rechten Artefakt-Panel gerendert.
 - **Quality Gates** (`make lint-agent`): Knowledge-Build, OpenAI-Tool-Schema-Compliance, Inhaltsqualität (stale refs, Duplikate, Token-Budgets), Routing-Gap-Erkennung über 675 Testprompts.
+
+![KI-Agent beantwortet eine Baustellen-Frage, erzeugt eine E-Mail als Artefakt und hebt die betroffenen 196 Tische auf der Karte hervor]({{ '/assets/images/projects/nalps-chrome-extension/ui-agent.png' | relative_url }})
 
 ---
 
@@ -142,13 +148,25 @@ Alles wird über ein einziges Makefile orchestriert (`make dev`, `make build`, `
 
 ## Screenshots
 
-<!-- TODO: Screenshots einfügen. Empfohlen:
-  1. Chrome Side Panel mit der Kartenansicht (Tische farbig, Bohrpunkte, Luftbild)
-  2. Modulträger-Seite mit Stack-Wizard und Karte
-  3. KI-Agent mit gestreamter Antwort + Karten-Artefakt + Plan-Card
-  4. Browser-Seite mit Grid + Filter + Karte im 65/35-Split
-  5. Druckvorschau einer Modulträger-Abnahme
--->
+### Browser-Seite – Grid, Filter und Karte im Split
+
+![Hauptansicht: Tabelle der Tische mit Filter-Chips, Abweichungsdiagramm und Luftbild-Karte mit farbkodiertem Bauzustand]({{ '/assets/images/projects/nalps-chrome-extension/ui-main.png' | relative_url }})
+
+### Vorbereitung – STRABAG-Primärkonstruktion auf Basis der SP-Daten
+
+![Vorbereitung-Seite: Auswahl- und Freigabe-Workflow mit Masstoleranzen und eingebetteter Primärkonstruktions-Zeichnung]({{ '/assets/images/projects/nalps-chrome-extension/ui-pdf-export.png' | relative_url }})
+
+### Druck-Pipeline – A4/A3-Export mit Titel, Tabelle und Legende
+
+![Druckvorschau eines Modulträger-Abnahme-Protokolls im Querformat mit beschrifteten Polygonen, Legende und Tisch-Tabelle]({{ '/assets/images/projects/nalps-chrome-extension/ui-print-preview.png' | relative_url }})
+
+![Druckdialog: Format, Orientierung, optionale Datentabelle mit Spaltenauswahl, Legende, Mail-Versand]({{ '/assets/images/projects/nalps-chrome-extension/ui-print-dialog.png' | relative_url }})
+
+### Responsiv – Tablet- und Mobile-Arbeitsplätze am Bau
+
+![Tablet-Ansicht: Tisch-Detailpanel mit Bohrpunkten und Filterdialog über der Karte]({{ '/assets/images/projects/nalps-chrome-extension/ui-tablet.png' | relative_url }})
+
+<img src="{{ '/assets/images/projects/nalps-chrome-extension/ui-mobile.png' | relative_url }}" alt="Mobile-Ansicht: vollständige Karte mit Legende und Such-/Filterleiste" style="max-width: 320px;">
 
 ---
 
